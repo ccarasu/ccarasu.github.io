@@ -21,20 +21,26 @@
     display: flex;
     justify-content: center;
   } 
-  header > div {
+  .logo {
+    margin-top: 10%;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .login {
     margin-top: 10%;
   }
+  .login img {
+    width: 24px;
+    height: 24px;
+  }
   .mobile_menu{
+    margin-top: 10%;
     display: flex;
     flex-direction: column;
     gap: 5px;
-    cursor: pointer;
-    padding: 10px;
+    padding: 5px;
     border-radius: 5px;
     transition: background-color 0.3s;
-  }
-  .mobile_menu:hover {
-    background-color: rgba(0,0,0,0.1);
   }
   .bar {
     width: 25px;
@@ -57,20 +63,21 @@
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
-
   .nav-menu a {
     padding: 10px 15px;
     text-decoration: none;
     color: #333;
     border-radius: 5px;
     transition: background-color 0.3s;
-
   }
-  .nav-menu a:hover {
-    background-color: rgba(0,0,0, 0.05);
+  .lottomenu {
+    height: 50px;
+    border: 1px solid #333;
   }
   .close-menu {
-    align-self: flex-end;
+    position: fixed;
+    right: 10px;
+    top: 10px;
     background: none;
     border: none;
     font-size: 20px;
