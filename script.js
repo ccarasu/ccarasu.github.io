@@ -11,17 +11,6 @@ jQuery(document).ready(function () {
     return false;
   });
 
-  // 로또 데이터 슬라이드 기능
-  const slider = $(".lotto");
-
-  async function fetchLottoData() {
-    const latestDraw = 903; // 최신 회차 번호를 알고 있다면 여기서 변경.
-    for (let i = latestDraw; i > latestDraw - 5; i--) {
-      // 최근 5회차의 데이터를 슬라이드로 추가
-      await addSlide(i);
-    }
-    initializeSlider();
-  }
 })
 document.querySelector('.mobile_menu'),addEventListener('click', function() {
   const navMenu = document.querySelector('.nav-menu');
