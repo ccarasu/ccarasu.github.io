@@ -3,17 +3,18 @@
   /* 기본 스타일 리셋 */
   * {
     margin: 0 auto; /* 모든 요소의 외부 여백을 0으로 설정 */
+    box-sizing: border-box;
     padding: 0; /* 모든 요소의 내부 여백을 0으로 설정 */
     list-style: none; /* 리스트 항목의 기본 점 모양을 제거 */
     font-family: 'jua', sans-serif; /* 'jua' 폰트 사용 */
-    color: #000000; /* 글자 색을 검정색으로 설정 */
+    color: #333333; /* 글자 색을 검정색으로 설정 */
   }
   
   /* 페이지 전체의 배경과 크기 설정 */
   body {
     width: 100%; /* 화면 너비 100% */
     height: 100%; /* 화면 높이 100% */
-    background-color: #ffffff; /* 배경색을 흰색으로 설정 */
+    background-color: #FFFFFF; /* 배경색을 흰색으로 설정 */
   }
   
   /* 헤더 부분 스타일 */
@@ -21,7 +22,7 @@
     float: left; /* 왼쪽으로 정렬 */
     width: 100%; /* 가로 전체 사용 */
     height: 100px; /* 세로 크기 100px */
-    background-color: grey; /* 배경색을 회색으로 설정 */
+    background-color: #199C6E; /* 배경색을 회색으로 설정 */
     display: flex; /* flexbox 사용 */
     justify-content: center; /* 자식 요소를 중앙 정렬 */
   }
@@ -60,9 +61,10 @@
   .bar {
     width: 25px; /* 너비 25px */
     height: 3px; /* 높이 3px */
-    background-color: #333; /* 색상은 검정 */
+    border-radius: 5px;
+    background-color: #000000; /* 색상은 검정 */
   }
-  
+
   /* 네비게이션 메뉴 스타일 */
   .nav-menu {
     position: fixed; /* 고정 위치 */
@@ -75,11 +77,9 @@
     flex-direction: column; /* 세로 방향으로 항목 배치 */
     justify-content: flex-start; /* 항목을 상단에 배치 */
     align-items: center; /* 항목을 수평 중앙 정렬 */
-    gap: 20px; /* 항목 간 간격 설정 */
+    gap: 45px; /* 항목 간 간격 설정 */
     padding: 15px; /* 내부 여백 15px */
-    background-color: #fff; /* 배경색 흰색 */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
-    border-bottom: 1px solid #333;  /*nav-menu 전체 하단에 구분선 추가*/
+    background-color: #199C6E; /* 배경색 흰색 */
   }
   .nav-menu.open {
     display: flex; /* 메뉴가 열리면 flexbox로 표시 */
@@ -90,26 +90,30 @@
     display: block; /*a 태그를 블록 요소로 처리하여 전체 너비 차지 */
     width: 100%;  /* 너비 100%로 설정하여 구분선이 전체 너비에 적용되도록*/
     padding: 10px 15px; /* 상하 10px, 좌우 15px 여백 */
+    font-size: 24px;
     text-decoration: none; /* 링크의 밑줄 제거 */
-    color: #333; /* 텍스트 색상 검정 */
+    color: #000000; /* 텍스트 색상 검정 */
     transition: background-color 0.3s; /* 배경색 전환 효과 */
-    border: 1px solid #333; /* 항목들 사이에 하단 구분선 추가 */
+    border: 1px solid #333333; /* 항목들 사이에 하단 구분선 추가 */
     margin-bottom: 5px; /* 항목들 사이 간격을 여유 있게 추가 */
   }
-
-  /* nav-menu가 열렸을 때 항목들이 더 잘 보이도록 구분선 강조 */
-  .nav-menu.open a {
-    border: 1px solid #333; /*각 항목 사이에 구분선 추가*/
+  
+  .nav-menu a#menu-logo {
+    font-size: 40px;
+    text-align: center;
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
   }
   /* 닫기 버튼 스타일 */
   .close-menu {
     position: fixed; /* 고정 위치 */
-    right: 10px; /* 화면 오른쪽 10px */
+    right: 20px; /* 화면 오른쪽 10px */
     top: 15px; /* 화면 상단 15px */
     background-color: transparent; /* 배경을 투명으로 설정 */
     border: none; /* 테두리 없음 */
-    font-size: 20px; /* 글자 크기 20px */
-    color: #333; /* 텍스트 색상 검정 */
+    font-size: 40px; /* 글자 크기 20px */
+    color: #000000; /* 텍스트 색상 검정 */
     padding: 10px; /* 내부 여백 10px */
     z-index: 10000; /* 다른 요소들 위에 표시 */
   }
@@ -139,7 +143,9 @@
   section#sct1 input[type=button] {
     width: 80px; /* 너비 80px */
     height: 30px; /* 높이 30px */
-    border: 1px solid #cccccc; /* 회색 테두리 */
+    background-color: #199C6E;
+    color: #333333;
+    border: 1px solid #199C6E; /* 회색 테두리 */
     border-radius: 20px; /* 둥근 모서리 설정 */
   }
 
@@ -148,6 +154,7 @@
     float: left;
     width: 100%;
     height: 200px; /* 높이 200px */
+    background-color: #1D6E4E;
   }
 
   /* 당첨 번호 메뉴 스타일 */
@@ -155,7 +162,6 @@
     text-align: center; /* 텍스트 중앙 정렬 */
     width: 100%; /* 가로 크기 100% */
     height: 100px; /* 높이 100px */
-    margin-top: 10px; /* 상단 여백 10px */
     margin-bottom: 10px; /* 하단 여백 10px */
   }
 
@@ -170,12 +176,12 @@
     font-size: 20px; /* 글자 크기 20px */
     text-align: center; /* 텍스트 중앙 정렬 */
     text-decoration: none; /* 링크의 밑줄 제거 */
-    background-color: #cccccc; /* 배경색 회색 */
-    border: 1px solid #dddddd; /* 테두리 */
+    background-color: #199C6E; /* 배경색 회색 */
+    border: 1px solid #1D6E4E; /* 테두리 */
     border-bottom: none; /* 하단 테두리 제거 */
   }
   .win_num_menu > li.checked > a {
-    background-color: #ffffff; /* 체크된 항목 배경 흰색으로 변경 */
+    background-color: #1D6E4E; /* 체크된 항목 배경 흰색으로 변경 */
   }
 
   /* 탭 메뉴 스타일 */
@@ -196,15 +202,27 @@
     font-size: 16px; /* 글자 크기 16px */
     text-align: center; /* 텍스트 중앙 정렬 */
     text-decoration: none; /* 링크의 밑줄 제거 */
-    background-color: #cccccc; /* 배경색 회색 */
-    border: 1px solid #dddddd; /* 테두리 */
+    color: #333333;
+    background-color: #199C6E; /* 배경색 회색 */
+    border: 1px solid #1D6E4E; /* 테두리 */
     border-bottom: none; /* 하단 테두리 제거 */
   }
   .tabmenu > li:first-child a {
     border-right: none; /* 첫 번째 항목 우측 테두리 제거 */
   }
   .tabmenu > li.active > a {
-    background-color: #ffffff; /* 활성화된 탭 배경 흰색 */
+    background-color: #1D6E4E; /* 활성화된 탭 배경 흰색 */
+  }
+  .tabmenu > li div {
+    position: absolute; /* 절대 위치 설정 */
+    left: 0px; /* 왼쪽 0px */
+    height: 0px; /* 초기 높이를 0px로 설정하여 기본적으로 보이지 않게 설정 */
+    overflow: hidden; /* 내용이 넘치지 않도록 숨기기 */
+  }
+  .tabmenu > li.active div {
+    width: 193px; /* div의 너비를 193px로 설정 */
+    height: 148px; /* div의 높이를 148px로 설정 */
+    border: 1px solid #1D6E4E; /* div에 테두리 추가 */
   }
 
   /* 공지사항, 뉴스, 언론 보도 스타일 */
@@ -222,7 +240,7 @@
     margin-right: 10px; /* 오른쪽 여백 10px */
   }
   .notice li:nth-child(2n), .news li:nth-child(2n) {
-    background-color: #cccccc; /* 짝수 항목 배경 회색 */
+    background-color: #E4D7B9; /* 짝수 항목 배경 회색 */
   }
   .notice li:hover, .news li:hover {
     font-weight: bold; /* 마우스 호버 시 글자 굵게 */
@@ -243,7 +261,7 @@
     float: left;
     width: 100%; /* 가로 크기 100% */
     height: 140px; /* 높이 140px */
-    background-color: grey; /* 배경색 회색 */
+    background-color: #199C6E; /* 배경색 회색 */
   }
 
   /* SNS 공유 아이콘 스타일 */
@@ -251,10 +269,13 @@
     display: inline-block; /* 인라인 블록 요소로 설정 */
     margin-right: 10px; /* 오른쪽 여백 10px */
   }
+  .share_sns li:first-child img{
+    margin-left: 20px;
+  }
   .share_sns li img {
-    width: 30px; /* 너비 30px */
-    height: 30px; /* 높이 30px */
-    padding: 10px; /* 내부 여백 10px */
-    margin-top: 45px; /* 상단 여백 45px */
+    width: 30px;
+    height: 30px;
+    margin-top: 55px; /* 상단 여백 45px */
+    margin-right: 20px;
   }
 }
