@@ -13,13 +13,13 @@ $(function () {
 
   // 햄버거 메뉴 클릭 시 메뉴 열기
   $(".mobile_menu").click(function () {
-    $(".nav-menu").fadeToggle(300).toggleClass("open"); // 애니메이션과 함께 메뉴 토글
+    $(".nav-menu").toggleClass("open");
     $("body").css("overflow", $(".nav-menu").hasClass("open") ? "hidden" : "auto");
   });
 
   // X 버튼 클릭 시 메뉴 닫기
   $("#closeMenu").click(function () {
-    $(".nav-menu").fadeOut(300).removeClass("open"); // 애니메이션과 함께 메뉴 닫기
+    $(".nav-menu").removeClass("open");
     $("body").css("overflow", "auto");
   });
 });
