@@ -1,93 +1,100 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로 또 복권</title>
+    <meta charset="UTF-8"> <!-- 문자 인코딩 설정 (UTF-8은 한글과 특수문자를 지원) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 화면 크기 및 비율 설정, 모바일 친화적 -->
+    <title>로 또 복권</title> <!-- 웹 페이지의 제목 -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Noto+Sans+KR:wght@100..900&display=swap');
     </style>
-    <!--구글 폰트에서 Jua 폰트 가져옴-->
-    <link rel="stylesheet" href="style.css">
-    <script src="jquery-3.7.1.js"></script>
-    <script src="script.js" defer></script>
+    <!-- 구글 폰트에서 Jua, Noto Sans KR, Black Han Sans 폰트를 가져옴 -->
+    <link rel="stylesheet" href="style.css"> <!-- 외부 CSS 파일 링크 -->
+    <script src="jquery-3.7.1.js"></script> <!-- jQuery 라이브러리 -->
+    <script src="script.js" defer></script> <!-- 외부 JavaScript 파일 링크 (defer는 HTML이 로드된 후 스크립트 실행) -->
 </head>
 <body>
     <header>
+        <!-- 모바일 메뉴 버튼, 화면 크기가 작을 때 보이는 메뉴 -->
         <div class="mobile_menu" id="mobileMenu">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+            <div class="bar"></div> <!-- 메뉴 바1 -->
+            <div class="bar"></div> <!-- 메뉴 바2 -->
+            <div class="bar"></div> <!-- 메뉴 바3 -->
         </div>
+        <!-- 내비게이션 메뉴 (전체 메뉴가 담겨있는 부분) -->
         <nav class="nav-menu" id="navMenu">
-            <a href="index.html">로 또 복권</a>
-            <button class="close-menu" id="closeMenu">X</button>
-            <a href="#">로또 추첨</a>
-            <a href="#">로또 회차별 당첨번호</a>
-            <a href="#">로또 당첨확률 높은 번호</a>
-            <a href="#">공지시항</a>
-            <a href="#">언론보도</a>
+            <a href="index.html">로 또 복권</a> <!-- 홈페이지 링크 -->
+            <button class="close-menu" id="closeMenu">X</button> <!-- 메뉴 닫기 버튼 -->
+            <a href="#">로또 추첨</a> <!-- 로또 추첨 페이지 링크 -->
+            <a href="#">로또 회차별 당첨번호</a> <!-- 로또 회차별 당첨번호 페이지 링크 -->
+            <a href="#">로또 당첨확률 높은 번호</a> <!-- 로또 당첨확률 높은 번호 페이지 링크 -->
+            <a href="#">공지사항</a> <!-- 공지사항 페이지 링크 -->
+            <a href="#">언론보도</a> <!-- 언론보도 페이지 링크 -->
         </nav>
+        <!-- 로고 부분 -->
         <div class="logo"><a href="index.html">로 또 복권</a></div>
-        <div class="login"><img src="images/login.png" alt=""></div>
+        <!-- 로그인 이미지 부분 -->
+        <div class="login"><img src="images/login.png" alt="로그인 이미지"></div>
     </header>
-    <!--사이트 상단 부분-->
+    <!-- 사이트 상단 부분 -->
     <section id="sct1">
         <ul class="quick_button">
-            <li><input type="button" value="번호 생성"></li>
-            <li><input type="button" value="당첨 확인"></li>
-            <li><input type="button" value="로또 통계"></li>
+            <li><input type="button" value="번호 생성"></li> <!-- 번호 생성 버튼 -->
+            <li><input type="button" value="당첨 확인"></li> <!-- 당첨 확인 버튼 -->
+            <li><input type="button" value="로또 통계"></li> <!-- 로또 통계 버튼 -->
         </ul>
     </section>
-    <!--사이트 빠른 이동 버튼 부분-->
+    <!-- 사이트 빠른 이동 버튼 부분 -->
     <section id="sct2">
         <div class="container">
             <ul class="win_num_menu">
-                <li class="checked"><a href="#">로또6/45</a>
-                    <div class="lotto"></div>
+                <li class="checked"><a href="#">로또6/45</a> <!-- 로또 6/45 링크 -->
+                    <div class="lotto"></div> <!-- 로또 관련 정보 표시할 공간 -->
                 </li>
-                <li><a href="#">연금복권</a>
-                    <div class="annunity"></div>
+                <li><a href="#">연금복권</a> <!-- 연금복권 링크 -->
+                    <div class="annunity"></div> <!-- 연금복권 관련 정보 표시할 공간 -->
                 </li>
             </ul>
         </div>
     </section>
+    <!-- 로또 종류 선택 부분 -->
     <section id="sct3">
         <ul class="tabmenu">
-            <li class="active"><a href="#">공지사항</a>
+            <li class="active"><a href="#">공지사항</a> <!-- 공지사항 탭 -->
                 <div class="notice">
                     <ul>
-                        <li><a href="#">공지사항1</a></li>
-                        <li><a href="#">공지사항2</a></li>
-                        <li><a href="#">공지사항3</a></li>
-                        <li><a href="#">공지사항4</a></li>
+                        <li><a href="#">공지사항1</a></li> <!-- 공지사항1 링크 -->
+                        <li><a href="#">공지사항2</a></li> <!-- 공지사항2 링크 -->
+                        <li><a href="#">공지사항3</a></li> <!-- 공지사항3 링크 -->
+                        <li><a href="#">공지사항4</a></li> <!-- 공지사항4 링크 -->
                     </ul>
                 </div>
             </li>
-            <li ><a href="#">언론보도</a>
+            <li><a href="#">언론보도</a> <!-- 언론보도 탭 -->
                 <div class="news">
                     <ul>
-                        <li><a href="#">언론보도1</a></li>
-                        <li><a href="#">언론보도2</a></li>
-                        <li><a href="#">언론보도3</a></li>
-                        <li><a href="#">언론보도4</a></li>
+                        <li><a href="#">언론보도1</a></li> <!-- 언론보도1 링크 -->
+                        <li><a href="#">언론보도2</a></li> <!-- 언론보도2 링크 -->
+                        <li><a href="#">언론보도3</a></li> <!-- 언론보도3 링크 -->
+                        <li><a href="#">언론보도4</a></li> <!-- 언론보도4 링크 -->
                     </ul>
                 </div>
             </li>
         </ul>
+        <!-- 이미지 영역 (나중에 이미지가 들어갈 자리) -->
         <div id="img">이미지</div>
     </section>
+    <!-- 공지사항과 언론보도 정보 영역 -->
     <footer>
         <div class="share_sns">
             <ul>
-                <li><img src="images/kakaologo.png" alt="카카오톡"></li>
-                <li><img src="images/messengerlogo.png" alt="메신저"></li>
-                <li><img src="images/instalogo.png" alt="인스타"></li>
-                <li><img src="images/ticktoklogo.png" alt="틱톡"></li>
+                <li><img src="images/kakaologo.png" alt="카카오톡"></li> <!-- 카카오톡 공유 아이콘 -->
+                <li><img src="images/messengerlogo.png" alt="메신저"></li> <!-- 메신저 공유 아이콘 -->
+                <li><img src="images/instalogo.png" alt="인스타"></li> <!-- 인스타그램 공유 아이콘 -->
+                <li><img src="images/ticktoklogo.png" alt="틱톡"></li> <!-- 틱톡 공유 아이콘 -->
             </ul>
         </div>
-        <!--sns공유기능-->
+        <!-- SNS 공유 기능 (각각의 SNS로 콘텐츠를 공유할 수 있는 아이콘들) -->
     </footer>
-    <!--사이트 하단 부분-->
+    <!-- 사이트 하단 부분 -->
 </body>
 </html>
