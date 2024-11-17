@@ -151,6 +151,7 @@
 
   /* 섹션2 스타일 */
   section#sct2 {
+    position: relative;
     float: left;
     width: 100%;
     height: 200px; /* 높이 200px */
@@ -161,14 +162,13 @@
   .win_num_menu {
     text-align: center; /* 텍스트 중앙 정렬 */
     width: 100%; /* 가로 크기 100% */
-    height: 100px; /* 높이 100px */
+    height: 30px; /* 높이 100px */
     margin-bottom: 10px; /* 하단 여백 10px */
   }
-
   .win_num_menu > li {
     float: left; /* 왼쪽 정렬 */
     width: 50%; /* 너비 50% */
-    height: 100px; /* 높이 100px */
+    height: 30px; /* 높이 100px */
     line-height: 30px; /* 텍스트의 세로 정렬 */
   }
   .win_num_menu > li > a {
@@ -183,6 +183,45 @@
   .win_num_menu > li.checked > a {
     background-color: #1D6E4E; /* 체크된 항목 배경 흰색으로 변경 */
   }
+  
+  
+  /* 화살표의 스타일 */
+  .arrow-prev, .arrow-next {
+    position: absolute;
+    top: 50%; /* 상위 요소 기준으로 수직 중앙 정렬 */
+    transform: translateY(-50%); /* 정확히 중앙에 배치 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .arrow-prev {
+    left: 10px; /* 화면 왼쪽에 배치 */
+  }
+
+  .arrow-next {
+    right: 10px; /* 화면 오른쪽에 배치 */
+  }
+
+  /* 화살표 모양 */
+  .arrow-prev::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-top: 5px solid #000;
+    border-right: 5px solid #000;
+    transform: rotate(225deg);
+  }
+
+  .arrow-next::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-top: 5px solid #000;
+    border-right: 5px solid #000;
+    transform: rotate(45deg);
+  }
+
 
   /* 탭 메뉴 스타일 */
   .tabmenu {
