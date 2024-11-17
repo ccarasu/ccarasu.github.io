@@ -62,7 +62,7 @@
     height: 3px; /* 높이 3px */
     background-color: #333; /* 색상은 검정 */
   }
-
+  
   /* 네비게이션 메뉴 스타일 */
   .nav-menu {
     position: fixed; /* 고정 위치 */
@@ -78,8 +78,8 @@
     gap: 20px; /* 항목 간 간격 설정 */
     padding: 15px; /* 내부 여백 15px */
     background-color: #fff; /* 배경색 흰색 */
-    border-radius: 5px; /* 둥근 모서리 설정 */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    border-bottom: 1px solid #333;  /*nav-menu 전체 하단에 구분선 추가*/
   }
   .nav-menu.open {
     display: flex; /* 메뉴가 열리면 flexbox로 표시 */
@@ -87,15 +87,20 @@
 
   /* 네비게이션 메뉴 항목 (a) 스타일 */
   .nav-menu a {
+    display: block; /*a 태그를 블록 요소로 처리하여 전체 너비 차지 */
+    width: 100%;  /* 너비 100%로 설정하여 구분선이 전체 너비에 적용되도록*/
     padding: 10px 15px; /* 상하 10px, 좌우 15px 여백 */
     text-decoration: none; /* 링크의 밑줄 제거 */
     color: #333; /* 텍스트 색상 검정 */
-    border-radius: 5px; /* 둥근 모서리 설정 */
     transition: background-color 0.3s; /* 배경색 전환 효과 */
-    border-top: 1px solid #333; /* 상단에 검은 실선 추가 */
-    border-bottom: 1px solid #333; /* 하단에 검은 실선 추가 */
+    border: 1px solid #333; /* 항목들 사이에 하단 구분선 추가 */
+    margin-bottom: 5px; /* 항목들 사이 간격을 여유 있게 추가 */
   }
 
+  /* nav-menu가 열렸을 때 항목들이 더 잘 보이도록 구분선 강조 */
+  .nav-menu.open a {
+    border: 1px solid #333; /*각 항목 사이에 구분선 추가*/
+  }
   /* 닫기 버튼 스타일 */
   .close-menu {
     position: fixed; /* 고정 위치 */
