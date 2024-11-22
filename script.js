@@ -11,6 +11,12 @@ $(function () {
     event.preventDefault(); // 기본 링크 클릭 동작(페이지 이동 등)을 방지
     $(this).parent().addClass("checked") // 클릭한 항목의 부모(li)에 'checked' 클래스를 추가
            .siblings().removeClass("checked"); // 형제 요소들의 'checked' 클래스는 제거
+
+    slideIndex = 1;
+    showSlides(slideIndex);
+
+    $(".dot").removeClass("active");
+    $(this).parent().find(".dot:first").addClass("active");
   });
 
   // 햄버거 메뉴 클릭 시 메뉴 열기/닫기
@@ -27,3 +33,36 @@ $(function () {
   });
 });
 
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("slide");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i<slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i=0;i<dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  // active 클래스 추가 시 앞에 공백이 없어서 생기는 문제 수정
+  dots[slideIndex-1].className += " active";
+  
+  // 슬라이드 전환 시 fade 효과 추가
+  slides[slideIndex-1].classList.add("fade");
+  setTimeout(() => {
+    slides[slideIndex-1].classList.remove("fade");
+  }, 1500); // CSS의 animation-duration과 동일하게 설정
+}

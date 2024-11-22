@@ -24,11 +24,11 @@
     background-color: #199C6E; /* 배경색을 어두운 녹색으로 설정 */
     display: flex; /* flexbox 사용하여 자식 요소 배치 */
     justify-content: center; /* 자식 요소를 중앙 정렬 */
+    align-items: center;
   }
 
   /* 로고 스타일 */
   .logo {
-    margin-top: 10%; /* 상단 여백 10% */
     font-size: 24px; /* 글자 크기 24px */
     font-weight: bold; /* 글자 굵기를 굵게 설정 */
   }
@@ -37,9 +37,6 @@
   }
 
   /* 로그인 이미지 스타일 */
-  .login {
-    margin-top: 10%; /* 상단 여백 10% */
-  }
   .login img {
     width: 24px; /* 이미지의 너비를 24px로 설정 */
     height: 24px; /* 이미지의 높이를 24px로 설정 */
@@ -47,7 +44,6 @@
 
   /* 모바일 메뉴 바 스타일 */
   .mobile_menu {
-    margin-top: 10%; /* 상단 여백 10% */
     display: flex; /* flexbox 사용하여 자식 요소 배치 */
     flex-direction: column; /* 세로 방향으로 배치 */
     gap: 5px; /* 항목 간 간격 설정 */
@@ -132,12 +128,12 @@
     min-height: 100px; /* 최소 높이 100px */
   }
   section#sct1 ul {
-    text-align: center; /* 리스트 항목 중앙 정렬 */
-  }
-  section#sct1 ul li {
-    display: inline-block; /* 리스트 항목을 인라인 블록으로 설정 */
-    padding: 3%; /* 내부 여백 3% */
-    margin-top: 7%; /* 상단 여백 7% */
+    margin-top: 2.5rem;
+    text-align: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
   }
 
   /* 버튼 스타일 */
@@ -156,15 +152,20 @@
     width: 100%; /* 가로 크기 100% */
     height: 200px; /* 높이 200px */
     background-color: #1D6E4E; /* 배경색 어두운 녹색 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   /* 당첨 번호 메뉴 스타일 */
   .win_num_menu {
+    position: relative;
     display: flex; /* flexbox 사용 */
     list-style-type: none; /* 리스트 항목의 기본 점 모양 제거 */
     width: 100%; /* 가로 크기 100% */
-    height: 40px; /* 높이 40px */
-    margin-bottom: 10px; /* 하단 여백 10px */
+    height: 30px; /* 높이 40px */
+    margin-bottom: 5px; /* 하단 여백 5px */
+    z-index: 2;
   }
 
   .win_num_menu > li {
@@ -192,7 +193,79 @@
   .win_num_menu > li.checked > a {
     background-color: #1D6E4E; /* 체크된 항목 배경 색상 */
   }
+  .win_num_menu > li div {
+    display: none;
+  }
 
+  .win_num_menu > li.checked div {
+    display: block;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 30px;
+    height: 170px;
+  }
+  
+  .slider-contaier {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .prev {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    left: 0.3rem; /* 왼쪽 끝으로 이동 */
+    width: auto;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 3px 0 0 3px; /* 왼쪽 모서리만 둥글게 */
+    user-select: none;
+    z-index: 3;
+  }
+  .next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    right: 0.3rem; /* 오른쪽 끝으로 이동 */
+    width: auto;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0; /* 오른쪽 모서리만 둥글게 */
+    user-select: none;
+    z-index: 3;
+  }
+  .dot-container {
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+  .dot {
+    height: 8px;
+    width: 8px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    cursor: pointer;
+  }
+  .active, .dot:hover {
+    background-color: #717171;
+  }
+
+  .fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+
+  @keyframes fade {
+    from  {opacity: .4}
+    to {opacity: 1}
+  }
   /* 탭 메뉴 스타일 */
   .tabmenu {
     float: left; /* 왼쪽 정렬 */
