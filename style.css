@@ -3,26 +3,26 @@
   /* 기본 스타일 리셋 */
   * {
     margin: 0 auto; /* 모든 요소의 외부 여백을 0으로 설정 */
-    box-sizing: border-box;
+    box-sizing: border-box; /* 요소의 크기를 포함하여 계산 */
     padding: 0; /* 모든 요소의 내부 여백을 0으로 설정 */
     list-style: none; /* 리스트 항목의 기본 점 모양을 제거 */
     font-family: 'jua', sans-serif; /* 'jua' 폰트 사용 */
-    color: #333333; /* 글자 색을 검정색으로 설정 */
+    color: #333333; /* 글자 색을 어두운 회색으로 설정 */
   }
   
   /* 페이지 전체의 배경과 크기 설정 */
   body {
     width: 100%; /* 화면 너비 100% */
     height: 100%; /* 화면 높이 100% */
-    background-color: #E4D7B9; /* 배경색을 흰색으로 설정 */
+    background-color: #E4D7B9; /* 배경색을 연한 베이지색으로 설정 */
   }
   
   /* 헤더 부분 스타일 */
   header {
     width: 100%; /* 가로 전체 사용 */
     height: 100px; /* 세로 크기 100px */
-    background-color: #199C6E; /* 배경색을 회색으로 설정 */
-    display: flex; /* flexbox 사용 */
+    background-color: #199C6E; /* 배경색을 어두운 녹색으로 설정 */
+    display: flex; /* flexbox 사용하여 자식 요소 배치 */
     justify-content: center; /* 자식 요소를 중앙 정렬 */
   }
 
@@ -48,7 +48,7 @@
   /* 모바일 메뉴 바 스타일 */
   .mobile_menu {
     margin-top: 10%; /* 상단 여백 10% */
-    display: flex; /* flexbox 사용 */
+    display: flex; /* flexbox 사용하여 자식 요소 배치 */
     flex-direction: column; /* 세로 방향으로 배치 */
     gap: 5px; /* 항목 간 간격 설정 */
     padding: 5px; /* 내부 여백 5px */
@@ -60,7 +60,7 @@
   .bar {
     width: 25px; /* 너비 25px */
     height: 3px; /* 높이 3px */
-    border-radius: 5px;
+    border-radius: 5px; /* 둥근 모서리 설정 */
     background-color: #000000; /* 색상은 검정 */
   }
 
@@ -78,7 +78,7 @@
     align-items: center; /* 항목을 수평 중앙 정렬 */
     gap: 45px; /* 항목 간 간격 설정 */
     padding: 15px; /* 내부 여백 15px */
-    background-color: #199C6E; /* 배경색 흰색 */
+    background-color: #199C6E; /* 배경색을 어두운 녹색으로 설정 */
   }
   .nav-menu.open {
     display: flex; /* 메뉴가 열리면 flexbox로 표시 */
@@ -86,33 +86,34 @@
 
   /* 네비게이션 메뉴 항목 (a) 스타일 */
   .nav-menu a {
-    display: block; /*a 태그를 블록 요소로 처리하여 전체 너비 차지 */
-    width: 100%;  /* 너비 100%로 설정하여 구분선이 전체 너비에 적용되도록*/
+    display: block; /* a 태그를 블록 요소로 처리하여 전체 너비 차지 */
+    width: 100%; /* 너비 100%로 설정하여 구분선이 전체 너비에 적용되도록 */
     padding: 10px 15px; /* 상하 10px, 좌우 15px 여백 */
-    font-size: 24px;
+    font-size: 24px; /* 글자 크기 24px */
     text-decoration: none; /* 링크의 밑줄 제거 */
     color: #000000; /* 텍스트 색상 검정 */
     transition: background-color 0.3s; /* 배경색 전환 효과 */
     border: 1px solid #333333; /* 항목들 사이에 하단 구분선 추가 */
-    border-radius: 5px;
+    border-radius: 5px; /* 둥근 모서리 설정 */
     margin-bottom: 5px; /* 항목들 사이 간격을 여유 있게 추가 */
   }
   
   .nav-menu a#menu-logo {
-    font-size: 40px;
-    text-align: center;
-    width: 100%;
-    padding: 10px 15px;
-    border: none;
+    font-size: 40px; /* 로고 항목 글자 크기 40px */
+    text-align: center; /* 중앙 정렬 */
+    width: 100%; /* 너비 100% */
+    padding: 10px 15px; /* 상하 10px, 좌우 15px 여백 */
+    border: none; /* 테두리 없음 */
   }
+
   /* 닫기 버튼 스타일 */
   .close-menu {
     position: fixed; /* 고정 위치 */
-    right: 20px; /* 화면 오른쪽 10px */
+    right: 20px; /* 화면 오른쪽 20px */
     top: 15px; /* 화면 상단 15px */
     background-color: transparent; /* 배경을 투명으로 설정 */
     border: none; /* 테두리 없음 */
-    font-size: 40px; /* 글자 크기 20px */
+    font-size: 40px; /* 글자 크기 40px */
     color: #000000; /* 텍스트 색상 검정 */
     padding: 10px; /* 내부 여백 10px */
     z-index: 10000; /* 다른 요소들 위에 표시 */
@@ -126,8 +127,8 @@
   
   /* 섹션1 스타일 */
   section#sct1 {
-    float: left;
-    width: 100%;
+    float: left; /* 왼쪽 정렬 */
+    width: 100%; /* 가로 크기 100% */
     min-height: 100px; /* 최소 높이 100px */
   }
   section#sct1 ul {
@@ -143,59 +144,58 @@
   section#sct1 input[type=button] {
     width: 80px; /* 너비 80px */
     height: 30px; /* 높이 30px */
-    background-color: #199C6E;
-    color: #333333;
-    border: 1px solid #199C6E; /* 회색 테두리 */
+    background-color: #199C6E; /* 버튼 배경색 */
+    color: #333333; /* 글자 색상 */
+    border: 1px solid #199C6E; /* 버튼 테두리 */
     border-radius: 20px; /* 둥근 모서리 설정 */
   }
 
   /* 섹션2 스타일 */
-.container  {
-  position: relative;
-  width: 100%;
-  height: 200px; /* 높이 200px */
-  background-color: #1D6E4E;
-}
+  .container {
+    position: relative; /* 상대 위치 설정 */
+    width: 100%; /* 가로 크기 100% */
+    height: 200px; /* 높이 200px */
+    background-color: #1D6E4E; /* 배경색 어두운 녹색 */
+  }
 
-/* 당첨 번호 메뉴 스타일 */
-.win_num_menu {
-  display: flex;
-  list-style-type: none;
-  width: 100%; /* 가로 크기 100% */
-  height: 40px; /* 높이 30px */
-  margin-bottom: 10px;
-}
+  /* 당첨 번호 메뉴 스타일 */
+  .win_num_menu {
+    display: flex; /* flexbox 사용 */
+    list-style-type: none; /* 리스트 항목의 기본 점 모양 제거 */
+    width: 100%; /* 가로 크기 100% */
+    height: 40px; /* 높이 40px */
+    margin-bottom: 10px; /* 하단 여백 10px */
+  }
 
-.win_num_menu > li {
-  width: 50%; /* 너비 50% */
-  height: 30px; /* 높이 30px */
-  line-height: 30px; /* 텍스트의 세로 정렬 */
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .win_num_menu > li {
+    width: 50%; /* 너비 50% */
+    height: 30px; /* 높이 30px */
+    line-height: 30px; /* 텍스트의 세로 정렬 */
+    text-align: center; /* 중앙 정렬 */
+    display: flex; /* flexbox 사용 */
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+  }
 
-.win_num_menu > li > a {
-  display: block; /* 블록 요소로 설정 */
-  font-size: 20px; /* 글자 크기 20px */
-  text-align: center; /* 텍스트 중앙 정렬 */
-  text-decoration: none; /* 링크의 밑줄 제거 */
-  background-color: #199C6E; /* 배경색 회색 */
-  border: 1px solid #1D6E4E; /* 테두리 */
-  border-bottom: none; /* 하단 테두리 제거 */
-  width: 100%;
-  height: 100%;
-}
+  .win_num_menu > li > a {
+    display: block; /* 블록 요소로 설정 */
+    font-size: 20px; /* 글자 크기 20px */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    text-decoration: none; /* 링크의 밑줄 제거 */
+    background-color: #199C6E; /* 배경색 어두운 녹색 */
+    border: 1px solid #1D6E4E; /* 테두리 설정 */
+    border-bottom: none; /* 하단 테두리 제거 */
+    width: 100%; /* 너비 100% */
+    height: 100%; /* 높이 100% */
+  }
 
-.win_num_menu > li.checked > a {
-  background-color: #1D6E4E; /* 체크된 항목 배경 색상 */
-}
-
+  .win_num_menu > li.checked > a {
+    background-color: #1D6E4E; /* 체크된 항목 배경 색상 */
+  }
 
   /* 탭 메뉴 스타일 */
   .tabmenu {
-    float: left;
+    float: left; /* 왼쪽 정렬 */
     width: 195px; /* 너비 195px */
     height: 180px; /* 높이 180px */
     margin-top: 10px; /* 상단 여백 10px */
@@ -211,16 +211,16 @@
     font-size: 16px; /* 글자 크기 16px */
     text-align: center; /* 텍스트 중앙 정렬 */
     text-decoration: none; /* 링크의 밑줄 제거 */
-    color: #333333;
-    background-color: #199C6E; /* 배경색 회색 */
-    border: 1px solid #1D6E4E; /* 테두리 */
+    color: #333333; /* 글자 색상 */
+    background-color: #199C6E; /* 배경색 어두운 녹색 */
+    border: 1px solid #1D6E4E; /* 테두리 설정 */
     border-bottom: none; /* 하단 테두리 제거 */
   }
   .tabmenu > li:first-child a {
     border-right: none; /* 첫 번째 항목 우측 테두리 제거 */
   }
   .tabmenu > li.active > a {
-    background-color: #1D6E4E; /* 활성화된 탭 배경 흰색 */
+    background-color: #1D6E4E; /* 활성화된 탭 배경색 */
   }
   .tabmenu > li div {
     position: absolute; /* 절대 위치 설정 */
@@ -236,7 +236,7 @@
 
   /* 공지사항, 뉴스, 언론 보도 스타일 */
   .notice ul, .news ul {
-    float: left;
+    float: left; /* 왼쪽 정렬 */
     width: 193px; /* 너비 193px */
     margin-top: 12px; /* 상단 여백 12px */
     margin-bottom: 12px; /* 하단 여백 12px */
@@ -249,30 +249,30 @@
     margin-right: 10px; /* 오른쪽 여백 10px */
   }
   .notice li:nth-child(even), .news li:nth-child(even) {
-    background-color: #199C6E; /* 짝수 항목 배경 회색 */
+    background-color: #199C6E; /* 짝수 항목 배경 어두운 녹색 */
   }
   .notice li:hover, .news li:hover {
     font-weight: bold; /* 마우스 호버 시 글자 굵게 */
   }
   .notice li a, .news li a {
-    margin-left: 5px;
+    margin-left: 5px; /* 왼쪽 여백 5px */
     text-decoration: none; /* 링크의 밑줄 제거 */
   }
 
   /* 이미지 영역 스타일 */
   section#sct3 div#img {
-    text-align: center;
-    margin-top: 25%;
-    max-width: 100%;
-    height: auto;
+    text-align: center; /* 중앙 정렬 */
+    margin-top: 25%; /* 상단 여백 25% */
+    max-width: 100%; /* 최대 너비 100% */
+    height: auto; /* 높이는 자동 조절 */
   }
 
   /* 푸터 스타일 */
   footer {
-    float: left;
+    float: left; /* 왼쪽 정렬 */
     width: 100%; /* 가로 크기 100% */
     height: 140px; /* 높이 140px */
-    background-color: #199C6E; /* 배경색 회색 */
+    background-color: #199C6E; /* 배경색 어두운 녹색 */
   }
 
   /* SNS 공유 아이콘 스타일 */
@@ -280,13 +280,13 @@
     display: inline-block; /* 인라인 블록 요소로 설정 */
     margin-right: 10px; /* 오른쪽 여백 10px */
   }
-  .share_sns li:first-child img{
-    margin-left: 20px;
+  .share_sns li:first-child img {
+    margin-left: 20px; /* 첫 번째 아이콘에 왼쪽 여백 20px */
   }
   .share_sns li img {
-    width: 30px;
-    height: 30px;
-    margin-top: 55px; /* 상단 여백 45px */
-    margin-right: 20px;
+    width: 30px; /* 아이콘 너비 30px */
+    height: 30px; /* 아이콘 높이 30px */
+    margin-top: 55px; /* 상단 여백 55px */
+    margin-right: 20px; /* 오른쪽 여백 20px */
   }
 }
