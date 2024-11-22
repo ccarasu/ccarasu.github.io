@@ -192,59 +192,6 @@
   background-color: #1D6E4E; /* 체크된 항목 배경 색상 */
 }
 
-.win_num-content {
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50%;
-  height: auto;
-}
-
-.win_num_menu > li.checked > .win_num-content {
-  display: block;
-}
-
-.lotto {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 100%;
-  height: auto;
-}
-.annunity {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 100%;
-  height: auto;
-}
-
-.ball6 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  width: 32px;
-  height: 32px;
-  border: 2px solid;
-  border-radius: 50%;
-  color: #FFFFFF;
-  font-size: 14px;
-  text-align: center;
-  line-height: 32px;
-}
-
-.bonus {
-  font-size: 20px;
-  font-weight: bold;
-  color: #000000;
-  text-align: center;
-}
-
 
   /* 탭 메뉴 스타일 */
   .tabmenu {
