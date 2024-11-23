@@ -147,16 +147,49 @@
     border-radius: 1.5rem;
   }
 
+  #lotto-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #lotto-draw-info {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    font-size: 1.2rem;
+    text-align: center;
+    color: #FFF;
+    top: 7.5rem;
+    z-index: 2;
+    background-color: #1D6E4E;
+    padding-top: 0.25rem;
+  }
+
+  #lotto-time {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    font-size: 0.8rem;
+    text-align: center;
+    top: 4.5rem;
+    z-index: 2;
+  }
+
   .lotto-result {
     position: relative;
     display: flex;
     justify-content: center;
     width: 100%;
-    top: 7rem;
+    top: 6rem;
     border: 1px solid #199C6E;
     background-color: #199C6E;
-    padding: 3rem 5.5rem 3rem 5.5rem;
+    padding: 3rem 3.9rem 3rem 3.9rem;
     gap: 1rem;
+    z-index: 1;
   }
 
   .ball {

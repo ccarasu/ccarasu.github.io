@@ -16,8 +16,8 @@ $(function () {
     const lotto_numbers = document.getElementById('lotto-numbers');
     lotto_numbers.innerHTML = '';
 
-    // 로또 번호를 저장할 배열 생성 (크기 5로 지정)
-    const lottoNumber = new Array(5); 
+    // 로또 번호를 저장할 배열 생성 (크기 6로 지정)
+    const lottoNumber = new Array(6); 
   
     for (let i = 0; i < lottoNumber.length; ) { 
       const number = Math.floor(Math.random() * 45) + 1; // 1부터 45까지의 랜덤 숫자 생성
@@ -27,6 +27,7 @@ $(function () {
         i++; // 중복되지 않으면 i 증가
       }
     }
+
   
     // 숫자를 오름차순으로 정렬
     lottoNumber.sort((a, b) => a - b);
@@ -58,9 +59,30 @@ $(function () {
   
     // 결과를 표시할 div에 추가
     lotto_numbers.appendChild(newDiv); // 새 div를 'lotto-numbers' div에 추가
+
+    // 최신 회차 계산 (단순화된 예시)
+    const latestDrawNumber = getLottoWeekNumber(); // 최신 회차를 계산하는 함수 호출
+    const drawInfoDiv = document.getElementById('lotto-draw-info');
+    drawInfoDiv.textContent = `${latestDrawNumber}회 로또번호 생성 완료`;
+
+    // 생성된 시간 표시
+    const generatedTime = new Date();
+    const year = generatedTime.getFullYear(); //년도
+    const month = (generatedTime.getMonth() + 1).toString().padStart(2, '0'); //월 (0부터 시작하므로 +1)
+    const day = generatedTime.getDate().toString().padStart(2, '0'); //일
+    const hours = generatedTime.getHours().toString().padStart(2, '0'); // 시간
+    const minutes = generatedTime.getMinutes().toString().padStart(2, '0'); // 분
+    const seconds = generatedTime.getSeconds().toString().padStart(2, '0'); // 초
+
+    const clockIcon = "&#x1F553;";  //시계 아이콘
+    const formattedTime = `${clockIcon} ${year}.${month}.${day} ${hours}:${minutes}:${seconds}`;
+
+    const timeNow = document.getElementById('lotto-time');
+    timeNow.innerHTML = `${formattedTime}`;
   });
 });
 
+//최신 로또 회차 구하는 함수
 function getLottoWeekNumber() {
   //오늘 날짜 구하기
 
@@ -80,7 +102,3 @@ function getLottoWeekNumber() {
   //최신 로또 회차 반환
   return currentLottoWeek;
 }
-
-console.log(`이번 주 로또 회차는 ${getLottoWeekNumber()}회차입니다.`);
-
-
