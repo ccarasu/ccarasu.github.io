@@ -132,18 +132,18 @@
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    text-align: center;
     padding: 0;
     margin: 0;
   }
 
   section#sct1 input[type=button] {
-    width: 80px;
-    height: 30px;
+    width: 4.5rem;
+    height: 1.8rem;
+    text-align: center;
     background-color: #199C6E;
     color: #333;
     border: 1px solid #199C6E;
-    border-radius: 20px;
+    border-radius: 1.5rem;
   }
 
   /* 섹션2 스타일 */
