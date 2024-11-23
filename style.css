@@ -165,7 +165,6 @@
     width: 100%; /* 가로 크기 100% */
     height: 30px; /* 높이 40px */
     margin-bottom: 5px; /* 하단 여백 5px */
-    z-index: 2;
   }
 
   .win_num_menu > li {
@@ -215,7 +214,7 @@
     cursor: pointer;
     position: absolute;
     top: 40%;
-    left: 0.3rem; /* 왼쪽 끝으로 이동 */
+    left: 0.7rem; /* 왼쪽 끝으로 이동 */
     width: auto;
     font-weight: bold;
     font-size: 18px;
@@ -228,7 +227,7 @@
     cursor: pointer;
     position: absolute;
     top: 40%;
-    right: 0.3rem; /* 오른쪽 끝으로 이동 */
+    right: 0.7rem; /* 오른쪽 끝으로 이동 */
     width: auto;
     font-weight: bold;
     font-size: 18px;
@@ -237,23 +236,8 @@
     user-select: none;
     z-index: 3;
   }
-  .dot-container {
-    position: absolute;
-    bottom: 10px;
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-  }
-  .dot {
-    height: 8px;
-    width: 8px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-    cursor: pointer;
-  }
-  .active, .dot:hover {
+  
+  .active{
     background-color: #717171;
   }
 

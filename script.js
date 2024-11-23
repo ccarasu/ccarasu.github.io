@@ -47,14 +47,10 @@ function currentSlide(n) {
 function showSlides(n) {
   let i;
   let slides = document.getElementsByClassName("slide");
-  let dots = document.getElementsByClassName("dot");
   if (n > slides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = slides.length}
   for (i = 0; i<slides.length; i++) {
     slides[i].style.display = "none";
-  }
-  for (i=0;i<dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
   }
   slides[slideIndex-1].style.display = "block";
   // active 클래스 추가 시 앞에 공백이 없어서 생기는 문제 수정
