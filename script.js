@@ -48,7 +48,7 @@ $(function () {
     $("body").css("overflow", "auto"); // 메뉴가 닫히면 body의 overflow를 'auto'로 복원하여 스크롤이 가능하도록 함
   });
 
-  let slideIndex = 0;
+  let slideIndex = 1; // 슬라이드 인덱스 초기화
 
   // 슬라이드 전환 함수
   function plusSlides(n, container) {
@@ -72,4 +72,7 @@ $(function () {
     }, 1500); // CSS의 animation-duration과 동일하게 설정
   }
 
+  // 슬라이드 초기화
+$(".win_num_menu > li:first-child .slide-container").show(); // 첫 번째 슬라이드 컨테이너 표시
+$(".win_num_menu > li:first-child .slide-container").show(); // 첫 번째 슬라이드만 표시
 });
