@@ -11,18 +11,34 @@ $(function () {
     event.preventDefault(); // 기본 링크 클릭 동작(페이지 이동 등)을 방지
     $(this).parent().addClass("checked") // 클릭한 항목의 부모(li)에 'checked' 클래스를 추가
            .siblings().removeClass("checked"); // 형제 요소들의 'checked' 클래스는 제거
+    
+    // 슬라이드 초기화
+    const targetContainer = $(this).siblings(".slide-container");
+    $(".slide-container").hide(); // 다른 슬라이드 컨테이너 숨기기
+    targetContainer.show(); // 선택된 슬라이드 컨테이너 표시
 
-    slideIndex = 1;
-    showSlides(slideIndex);
-
-    $(".dot").removeClass("active");
-    $(this).parent().find(".dot:first").addClass("active");
+    slideIndex = 1; // 슬라이드 인덱스 초기화
+    showSlides(slideIndex, targetContainer); // 첫 번째 슬라이드로 초기화
   });
+
+  // prev/next 버튼 클릭 이벤트 처리
+  $(".win_num_menu").on("click", ".prev", function () {
+    const container = $(this).closest(".slide-container");
+    plusSlides(-1, container); // 이전 슬라이드
+  });
+
+  $(".win_num_menu").on("click", ".next", function () {
+    const container = $(this).closest(".slide-container");
+    plusSlides(1, container); // 다음 슬라이드
+  });
+
+  // 초기 설정: 첫 번째 메뉴 활성화, 첫 번째 슬라이드 표시
+  $(".win_num_menu > li:first-child .slide-container").show();
+  $(".win_num_menu > li:first-child .slide-container .slide:first").show();
 
   // 햄버거 메뉴 클릭 시 메뉴 열기/닫기
   $(".mobile_menu").click(function () {
     $(".nav-menu").toggleClass("open"); // nav-menu에 'open' 클래스를 토글하여 메뉴 열고 닫기
-    // 메뉴가 열리면 body의 overflow를 'hidden'으로 설정해 스크롤이 생기지 않도록 함
     $("body").css("overflow", $(".nav-menu").hasClass("open") ? "hidden" : "auto");
   });
 
@@ -31,34 +47,29 @@ $(function () {
     $(".nav-menu").removeClass("open"); // nav-menu에서 'open' 클래스를 제거하여 메뉴 닫기
     $("body").css("overflow", "auto"); // 메뉴가 닫히면 body의 overflow를 'auto'로 복원하여 스크롤이 가능하도록 함
   });
-});
 
-let slideIndex = 1;
-showSlides(slideIndex);
+  let slideIndex = 0;
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("slide");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i<slides.length; i++) {
-    slides[i].style.display = "none";
+  // 슬라이드 전환 함수
+  function plusSlides(n, container) {
+    slideIndex += n; // 슬라이드 인덱스를 변경
+    showSlides(slideIndex, container); // 새 슬라이드 표시
   }
-  slides[slideIndex-1].style.display = "block";
-  // active 클래스 추가 시 앞에 공백이 없어서 생기는 문제 수정
-  dots[slideIndex-1].className += " active";
-  
-  // 슬라이드 전환 시 fade 효과 추가
-  slides[slideIndex-1].classList.add("fade");
-  setTimeout(() => {
-    slides[slideIndex-1].classList.remove("fade");
-  }, 1500); // CSS의 animation-duration과 동일하게 설정
-}
+
+  // 슬라이드 표시 함수
+  function showSlides(n, container) {
+    const slides = container.find(".slide"); // ".slide" 클래스를 가진 요소 찾기
+    if (n > slides.length) slideIndex = 1; // 마지막 슬라이드 다음이면 첫 번째 슬라이드로
+    if (n < 1) slideIndex = slides.length; // 첫 번째 슬라이드 이전이면 마지막 슬라이드로
+
+    slides.hide(); // 모든 슬라이드 숨기기
+    slides.eq(slideIndex - 1).show(); // 현재 슬라이드만 표시
+    
+    // 슬라이드 전환 시 fade 효과 추가
+    $(slides[slideIndex - 1]).addClass("fade");
+    setTimeout(() => {
+      $(slides[slideIndex - 1]).removeClass("fade");
+    }, 1500); // CSS의 animation-duration과 동일하게 설정
+  }
+
+});
