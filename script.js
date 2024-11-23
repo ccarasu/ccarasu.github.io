@@ -1,4 +1,13 @@
 $(function () {
+  let slideIndex = 1; // 슬라이드 인덱스 초기화
+
+  // 모든 슬라이드 숨기기
+  $(".win_num_menu .slide-container .slide").hide();
+  
+  // 첫 번째 슬라이드와 컨테이너 초기화
+  $(".win_num_menu > li:first-child .slide-container").show();
+  $(".win_num_menu > li:first-child .slide-container .slide:first").show();
+
   // 탭 메뉴 클릭 시 해당 탭에 'active' 클래스 추가하고 다른 탭의 'active' 클래스 제거
   $(".tabmenu > li > a").click(function (event) {
     event.preventDefault(); // 기본 링크 클릭 동작(페이지 이동 등)을 방지
@@ -32,10 +41,6 @@ $(function () {
     plusSlides(1, container); // 다음 슬라이드
   });
 
-  // 초기 설정: 첫 번째 메뉴 활성화, 첫 번째 슬라이드 표시
-  $(".win_num_menu > li:first-child .slide-container").show();
-  $(".win_num_menu > li:first-child .slide-container .slide:first").show();
-
   // 햄버거 메뉴 클릭 시 메뉴 열기/닫기
   $(".mobile_menu").click(function () {
     $(".nav-menu").toggleClass("open"); // nav-menu에 'open' 클래스를 토글하여 메뉴 열고 닫기
@@ -47,8 +52,6 @@ $(function () {
     $(".nav-menu").removeClass("open"); // nav-menu에서 'open' 클래스를 제거하여 메뉴 닫기
     $("body").css("overflow", "auto"); // 메뉴가 닫히면 body의 overflow를 'auto'로 복원하여 스크롤이 가능하도록 함
   });
-
-  let slideIndex = 1; // 슬라이드 인덱스 초기화
 
   // 슬라이드 전환 함수
   function plusSlides(n, container) {
@@ -71,8 +74,4 @@ $(function () {
       $(slides[slideIndex - 1]).removeClass("fade");
     }, 1500); // CSS의 animation-duration과 동일하게 설정
   }
-
-  // 슬라이드 초기화
-$(".win_num_menu > li:first-child .slide-container").show(); // 첫 번째 슬라이드 컨테이너 표시
-$(".win_num_menu > li:first-child .slide-container").show(); // 첫 번째 슬라이드만 표시
 });
