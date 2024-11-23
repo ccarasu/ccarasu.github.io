@@ -229,7 +229,7 @@
     position: absolute;
     top: 40%;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 30px;
     transition: 0.6s ease;
     border-radius: 3px;
     user-select: none;
@@ -237,11 +237,11 @@
   }
 
   .prev {
-    left: 1rem;
+    left: 0.95rem;
   }
 
   .next {
-    right: 1rem;
+    right: 0.95rem;
   }
 
   .fade {
