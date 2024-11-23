@@ -1,5 +1,9 @@
 /* 모바일 화면을 위한 CSS */
 @media (max-width: 767px) {
+  /* 브라우저가 자동 색상 반전하지 않도록 설정 */
+  :root {
+    color-scheme: light dark; 
+  }
   /* 기본 스타일 리셋 */
   * {
     margin: 0;
@@ -7,14 +11,14 @@
     box-sizing: border-box;
     list-style: none;
     font-family: 'jua', sans-serif;
-    color: #333;
+    color: #333 !important;
   }
   
   /* 페이지 전체의 배경과 크기 설정 */
   body {
     width: 100%;
     height: 100%;
-    background-color: #E4D7B9;
+    background-color: #E4D7B9 !important;
   }
   
   /* 헤더 부분 스타일 */
