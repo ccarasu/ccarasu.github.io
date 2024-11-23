@@ -34,11 +34,26 @@ $(function () {
     // 새로운 div 생성
     const newDiv = document.createElement('div');
     newDiv.className = 'lotto-result'; // 스타일을 위한 클래스 추가
+
+    //각 로또 번호를 <span>태그로 감싸서 추가
     lottoNumber.forEach(function(number) {
-      const span = document.createElement('span');
-      span.textContent = number;
-      span.classList.add('ball');
-      newDiv.appendChild(span);
+      const span = document.createElement('span');  //<span> 태그 생성
+      span.textContent = number;  // <span>에 숫자 삽입
+      span.classList.add('ball'); // <span>에 'ball' 클래스 추가
+
+      // 번호에 따라 색상 클래스 추가
+      if (number >= 1 && number <= 10) {
+        span.classList.add('yellow');
+      } else if (number >= 11 && number <= 20) {
+        span.classList.add('blue');
+      } else if (number >= 21 && number <= 30) {
+        span.classList.add('red');
+      } else if (number >= 31 && number <= 40) {
+        span.classList.add('gray');
+      } else if (number >= 41 && number <= 45) {
+        span.classList.add('green');
+      } 
+      newDiv.appendChild(span);   // <span>을 newDiv에 추가
     })
   
     // 결과를 표시할 div에 추가

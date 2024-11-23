@@ -151,20 +151,48 @@
     position: relative;
     display: flex;
     justify-content: center;
+    width: 100%;
     top: 7rem;
-    border: 1px solid #000;
+    border: 1px solid #199C6E;
     background-color: #199C6E;
-    padding: 3rem 7rem 2rem 7rem;
-    gap: 0.8rem;
+    padding: 3rem 5.5rem 3rem 5.5rem;
+    gap: 1rem;
   }
 
   .ball {
     display: inline-block;
     width: 1.8rem;
     height: 1.8rem;
+    font-size: 1rem;
     border-radius: 50%;
     border: 1px solid #000;
+    color: #ffffff;
     text-align: center;
     line-height: 1.8rem;
+  }
+
+  .yellow {
+    background-color: #ffc107; /* 1~10번은 노란색 */
+    border-color: #ffc107;
+  }
+  
+  .blue {
+    background-color: #035aa6; /* 11~20번은 파란색 */
+    border-color: #035aa6;
+  }
+  
+  .red {
+    background-color: #dc3545; /* 21~30번은 빨간색 */
+    border-color: #dc3545;
+  }
+  
+  .gray {
+    background-color: #6c757d; /* 31~40번은 회색 */
+    border-color: #6c757d;
+  }
+  
+  .green {
+    background-color: #28a745; /* 41~45번은 녹색 */
+    border-color: #28a745;
   }
 }
