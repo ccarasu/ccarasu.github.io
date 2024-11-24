@@ -72,7 +72,7 @@ $(function () {
       $(slides[slideIndex - 1]).addClass("fade");
       setTimeout(() => {
           $(slides[slideIndex - 1]).removeClass("fade");
-      }, 3000); // CSS의 animation-duration과 동일하게 설정
+      }, 1500);
   }
 
   let currentRound = getLottoWeekNumber(); // 시작 회차
