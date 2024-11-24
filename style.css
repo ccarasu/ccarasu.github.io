@@ -391,9 +391,6 @@
     text-decoration: none;
     color: #000;
   }
-  .notice li a:nth-child(1st) {
-    color: #fff;
-  }
   /* 이미지 영역 스타일 */
   #img {
     flex-grow: 1;
