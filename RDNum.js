@@ -95,10 +95,15 @@ function getLottoWeekNumber() {
   const diffTime = today - firstLottoDate;  //밀리초 단위 차이
   const diffDays = diffTime / (1000 * 60 * 60 * 24);  // 일수 차이
   const weeksPassed = Math.floor(diffDays / 7); // 주 수로 변환
+  
+  // 토요일 오후 8시 기준
+  const todayDay = today.getDay(); // 요일 (0: 일요일 ~ 6: 토요일)
+  const todayHours = today.getHours(); // 현재 시간
 
-  // 첫 회차부터 시작하므로 +1을 더하여 현재 회차 계산
-  const currentLottoWeek = weeksPassed + 1;
+  // 토요일이지만 오후 8시 전이라면 최신 회차는 아직 갱신되지 않음
+  if (todayDay === 6 && todayHours < 20) {
+      return weeksPassed; // 이전 주 회차 반환
+  }
 
-  //최신 로또 회차 반환
-  return currentLottoWeek;
+  return weeksPassed + 1; // 최신 회차 반환
 }

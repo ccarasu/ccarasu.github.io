@@ -1,9 +1,5 @@
 /* 모바일 화면을 위한 CSS */
 @media (max-width: 767px) {
-  /* 브라우저가 자동 색상 반전하지 않도록 설정 */
-  :root {
-    color-scheme: light dark; 
-  }
   /* 기본 스타일 리셋 */
   * {
     margin: 0;
@@ -11,14 +7,14 @@
     box-sizing: border-box;
     list-style: none;
     font-family: 'jua', sans-serif;
-    color: #333 !important;
+    color: #000;
   }
   
   /* 페이지 전체의 배경과 크기 설정 */
   body {
     width: 100%;
     height: 100%;
-    background-color: #E4D7B9 !important;
+    background-color: #E4D7B9;
   }
   
   /* 헤더 부분 스타일 */
@@ -220,13 +216,61 @@
   }
 
   .slide {
-    position: absolute;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 2;
     width: 100%;
-    height: 100%;
+    height: auto;
+  }
+
+  .round {
+    position: absolute;
+    top: 0;
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  .ball-container {
+    position: fixed;
+    top: 40%;
+  }
+  .ball {
+    display: inline-block;
+    border: 1px solid #000;
+    border-radius: 50%;
+    width: 1.8rem;
+    height: 1.8rem;
+    font-size: 0.9rem;
+    line-height: 1.8rem;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .yellow {
+    background-color: #ffc107; /* 1~10번은 노란색 */
+    border-color: #ffc107;
+  }
+  
+  .blue {
+    background-color: #035aa6; /* 11~20번은 파란색 */
+    border-color: #035aa6;
+  }
+  
+  .red {
+    background-color: #dc3545; /* 21~30번은 빨간색 */
+    border-color: #dc3545;
+  }
+  
+  .gray {
+    background-color: #6c757d; /* 31~40번은 회색 */
+    border-color: #6c757d;
+  }
+  
+  .green {
+    background-color: #28a745; /* 41~45번은 녹색 */
+    border-color: #28a745;
   }
 
   .prev, .next {
