@@ -6,7 +6,7 @@
     box-sizing: border-box;
     list-style: none;
     font-family: 'jua', sans-serif;
-    color: #333;
+    color: #000;
   }
   /* 페이지 전체의 배경과 크기 설정 */
   body {
@@ -142,7 +142,7 @@
     height: 1.8rem;
     text-align: center;
     background-color: #199C6E;
-    color: #333;
+    color: #000;
     border: 1px solid #199C6E;
     border-radius: 1.5rem;
   }

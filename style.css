@@ -231,9 +231,15 @@
     font-size: 1.25rem;
     font-weight: bold;
   }
+
   .ball-container {
-    position: fixed;
-    top: 40%;
+    position: absolute;
+    top: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
+    z-index: 2;
   }
   .ball {
     display: inline-block;
