@@ -141,7 +141,7 @@
     height: 1.8rem;
     text-align: center;
     background-color: #199C6E;
-    color: #000;
+    color: #fff;
     border: 1px solid #199C6E;
     border-radius: 1.5rem;
   }
@@ -391,7 +391,9 @@
     text-decoration: none;
     color: #000;
   }
-
+  .notice li a:nth-child(1st) {
+    color: #fff;
+  }
   /* 이미지 영역 스타일 */
   #img {
     flex-grow: 1;
