@@ -13,14 +13,18 @@
   /* 페이지 전체의 배경과 크기 설정 */
   body {
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
     background-color: #E4D7B9;
   }
   
+  #wrapper {
+    min-height: 100%;
+  }
+
   /* 헤더 부분 스타일 */
   header {
     width: 100%;
-    height: 100px;
+    height: 6.25rem;
     background-color: #199C6E;
     display: flex;
     justify-content: center;
@@ -29,7 +33,7 @@
   }
 
   .logo {
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: bold;
   }
 
@@ -39,24 +43,24 @@
 
   /* 로그인 이미지 스타일 */
   .login img {
-    width: 24px;
-    height: 24px;
+    width: 1.5rem;
+    height: 1.5rem;
   }
 
   /* 모바일 메뉴 바 스타일 */
   .mobile_menu {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    padding: 5px;
-    border-radius: 5px;
+    gap: 0.3125rem;
+    padding: 0.3125rem;
+    border-radius: 0.3125rem;
     transition: background-color 0.3s;
   }
 
   .bar {
-    width: 25px;
-    height: 3px;
-    border-radius: 5px;
+    width: 1.5625rem;
+    height: 0.1875rem;
+    border-radius: 0.3125rem;
     background-color: #fff;
   }
 
@@ -72,8 +76,8 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    gap: 45px;
-    padding: 15px;
+    gap: 2.8125rem;
+    padding: 0.9375rem;
     background-color: #199C6E;
   }
 
@@ -84,47 +88,43 @@
   .nav-menu a {
     display: block;
     width: 100%;
-    padding: 10px 15px;
-    font-size: 24px;
+    padding: 0.625rem 0.9375rem;
+    font-size: 1.5rem;
     text-decoration: none;
     color: #fff;
-    border: 1px solid #fff;
-    border-radius: 5px;
-    margin-bottom: 5px;
+    border: 0.0625rem solid #fff;
+    border-radius: 0.3125rem;
+    margin-bottom: 0.3125rem;
     transition: background-color 0.3s;
   }
 
   .nav-menu a#menu-logo {
-    font-size: 40px;
+    font-size: 2.5rem;
     text-align: center;
     width: 100%;
-    padding: 10px 15px;
+    padding: 0.625rem 0.9375rem;
     border: none;
   }
 
   .close-menu {
     position: fixed;
-    right: 20px;
-    top: 15px;
+    right: 1.25rem;
+    top: 0.9375rem;
     background-color: transparent;
     border: none;
-    font-size: 40px;
+    font-size: 2.5rem;
     color: #fff;
-    padding: 10px;
+    padding: 0.625rem;
     z-index: 10000;
   }
 
-  /* 섹션 스타일 */
-  section {
-    width: 100%;
-  }
 
   /* 섹션1 스타일 */
   section#sct1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px;
+    height: 6.25rem;
   }
 
   section#sct1 ul {
@@ -142,7 +142,7 @@
     text-align: center;
     background-color: #199C6E;
     color: #fff;
-    border: 1px solid #199C6E;
+    border: 0.0625rem solid #199C6E;
     border-radius: 1.5rem;
   }
 
@@ -150,7 +150,7 @@
   .container {
     position: relative;
     width: 100%;
-    height: 200px;
+    height: 12.5rem;
     background-color: #1D6E4E;
     display: flex;
     flex-direction: column;
@@ -162,14 +162,14 @@
   .win_num_menu {
     display: flex;
     width: 100%;
-    height: 30px;
-    margin-bottom: 5px;
+    height: 1.875rem;
+    margin-bottom: 0.3125rem;
   }
 
   .win_num_menu > li {
     width: 50%;
-    height: 30px;
-    line-height: 30px;
+    height: 1.875rem;
+    line-height: 1.875rem;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -178,11 +178,11 @@
 
   .win_num_menu > li > a {
     display: block;
-    font-size: 20px;
+    font-size: 1.25rem;
     text-align: center;
     text-decoration: none;
     background-color: #199C6E;
-    border: 1px solid #1D6E4E;
+    border: 0.0625rem solid #1D6E4E;
     width: 100%;
     height: 100%;
   }
@@ -199,8 +199,8 @@
     display: block;
     position: absolute;
     left: 0;
-    top: 30px;
-    height: 170px;
+    top: 1.875rem;
+    height: 10.625rem;
     width: 100%;
   }
 
@@ -285,7 +285,7 @@
     font-weight: bold;
     font-size: 30px;
     transition: 0.6s ease;
-    border-radius: 3px;
+    border-radius: 0.1875rem;
     user-select: none;
     z-index: 3;
   }
@@ -321,25 +321,25 @@
     display: flex;
     flex-direction: row;
     justify-content:left;
-    width: 195px;
-    height: 180px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    width: 12.1875rem;
+    height: 11.25rem;
+    margin-top: 0.625rem;
+    margin-bottom: 0.625rem;
   }
 
   .tabmenu > li {
-    width: 80px;
-    line-height: 30px;
+    width: 5rem;
+    line-height: 1.875rem;
   }
 
   .tabmenu > li > a {
     display: block;
-    font-size: 16px;
+    font-size: 1rem;
     text-align: center;
     text-decoration: none;
     color: #fff;
     background-color: #199C6E;
-    border: 1px solid #1D6E4E;
+    border: 0.0625rem solid #1D6E4E;
     border-bottom: none;
   }
 
@@ -359,23 +359,23 @@
   }
 
   .tabmenu > li.active div {
-    width: 193px;
-    height: 148px;
-    border: 1px solid #1D6E4E;
+    width: 12.0625rem;
+    height: 9.25rem;
+    border: 0.00625rem solid #1D6E4E;
   }
 
   /* 공지사항, 뉴스, 언론 보도 스타일 */
   .notice ul, .news ul {
-    width: 193px;
-    margin-top: 12px;
-    margin-bottom: 12px;
+    width: 12.0625rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
   }
 
   .notice li, .news li {
-    height: 32px;
-    line-height: 32px;
-    font-size: 15px;
-    margin: 0 10px;
+    height: 2rem;
+    line-height: 2rem;
+    font-size: 0.9375rem;
+    margin: 0 0.625rem;
   }
 
   .notice li:nth-child(even), .news li:nth-child(even) {
@@ -387,11 +387,16 @@
   }
 
   .notice li a, .news li a {
-    margin-left: 5px;
+    margin-left: 0.3125rem;
     text-decoration: none;
     color: #000;
   }
   /* 이미지 영역 스타일 */
+  .img-container {
+    position: relative;
+    width: 100%;
+    height: 12.5rem;
+  }
   #img {
     flex-grow: 1;
     height: 100%;
@@ -405,25 +410,22 @@
   }
   /* 푸터 스타일 */
   footer {
-    width: 100%;
-    height: 140px;
+    position: relative;
+    bottom: 0;
+    padding-bottom: 32vh;
     background-color: #199C6E;
   }
 
   /* SNS 공유 아이콘 스타일 */
-  .share_sns li {
-    display: inline-block;
-    margin-right: 10px;
+  .share_sns ul {
+    display: flex;
+    flex-direction: row;
+    gap: 1.25rem;
   }
-
-  .share_sns li:first-child img {
-    margin-left: 20px;
-  }
-
-  .share_sns li img {
-    width: 30px;
-    height: 30px;
-    margin-top: 55px;
-    margin-right: 20px;
+  
+  .share_sns li input {
+      width: 2rem;
+      height: 2rem;
+      
   }
 }
