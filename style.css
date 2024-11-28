@@ -422,6 +422,12 @@
     flex-direction: row;
     gap: 1.25rem;
   }
+  .share_sns li {
+    padding-top: 1.5rem;
+  }
+  .share_sns li:first-child {
+    padding-left: 1.5rem;
+  }
   
   .share_sns li input {
       width: 2rem;
