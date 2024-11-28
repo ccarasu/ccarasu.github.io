@@ -377,6 +377,7 @@ header {
 /* 푸터 스타일 */
 footer {
   position: relative;
+  width: 100%;
   bottom: 0;
   padding-bottom: 32vh;
   background-color: #199C6E;
@@ -386,9 +387,9 @@ footer {
 .share_sns ul {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   gap: 1.25rem;
   padding-top: 1.5rem;
-  padding-left: 26rem;
 }
 
 .share_sns li input {
