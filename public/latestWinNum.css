@@ -52,99 +52,6 @@ body {
   padding-left: 0.5rem;
 }
 
-section#lotto-main{
-  position: relative;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 15.625rem;
-}
-
-#lotto-simulator {
-  position: absolute;
-  top: 2rem;
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #000;
-}
-
-.quick-button {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  gap: 5rem;
-  margin: 0;
-  padding: 0;
-  top: 5.5rem;
-}
-
-.quick-button  input[type=button] {
-  width: 6rem;
-  height: 2.5rem;
-  font-size: 1.25rem;
-  text-align: center;
-  background-color: #199C6E;
-  color: #fff;
-  border: 1px solid #199C6E;
-  border-radius: 1.5rem;
-}
-
-#lotto-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-#lotto-draw-info {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: auto;
-  font-size: 1.2rem;
-  text-align: center;
-  color: #FFF;
-  top: 10rem;
-  z-index: 2;
-  background-color: #1D6E4E;
-  padding-top: 0.25rem;
-}
-
-#lotto-time {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: auto;
-  font-size: 0.8rem;
-  text-align: center;
-  top: 7.15rem;
-  z-index: 2;
-}
-
-.lotto-result {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  top: 8.65rem;
-  border: 1px solid #199C6E;
-  background-color: #199C6E;
-  padding: 3rem 3.9rem 3rem 3.9rem;
-  gap: 1rem;
-  z-index: 1;
-}
-
-.ball {
-  display: inline-block;
-  width: 2rem;
-  height: 2rem;
-  font-size: 1.155rem;
-  border-radius: 50%;
-  border: 1px solid #000;
-  color: #ffffff;
-  text-align: center;
-  line-height: 2rem;
-}
 
 .yellow {
   background-color: #ffc107; /* 1~10번은 노란색 */
@@ -171,14 +78,6 @@ section#lotto-main{
   border-color: #28a745;
 }
 
-section#lotto-list {
-  position: relative;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: auto;
-}
 @media (max-width: 767px) {
   /* 기본 스타일 리셋 */
   * {
@@ -293,100 +192,7 @@ section#lotto-list {
     z-index: 10000;
   }
 
-  section#lotto-main{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 250px;
-  }
-
-  #lotto-simulator {
-    position: absolute;
-    top: 1rem;
-    left: 2rem;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #000;
-  }
-
-  .quick-button {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
-    top: 3.8rem;
-  }
-
-  .quick-button  input[type=button] {
-    width: 4.5rem;
-    height: 1.8rem;
-    text-align: center;
-    background-color: #199C6E;
-    font-size: 1rem;
-    color: #fff;
-    border: 1px solid #199C6E;
-    border-radius: 1.5rem;
-  }
-
-  #lotto-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  #lotto-draw-info {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: auto;
-    font-size: 1.2rem;
-    text-align: center;
-    color: #FFF;
-    top: 7.5rem;
-    z-index: 2;
-    background-color: #1D6E4E;
-    padding-top: 0.25rem;
-  }
-
-  #lotto-time {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: auto;
-    font-size: 0.8rem;
-    text-align: center;
-    top: 4.5rem;
-    z-index: 2;
-  }
-
-  .lotto-result {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    top: 6rem;
-    border: 1px solid #199C6E;
-    background-color: #199C6E;
-    padding: 3rem 3.9rem 3rem 3.9rem;
-    gap: 1rem;
-    z-index: 1;
-  }
-
-  .ball {
-    display: inline-block;
-    width: 1.8rem;
-    height: 1.8rem;
-    font-size: 1rem;
-    border-radius: 50%;
-    border: 1px solid #000;
-    color: #ffffff;
-    text-align: center;
-    line-height: 1.8rem;
-  }
+  
 
   .yellow {
     background-color: #ffc107; /* 1~10번은 노란색 */

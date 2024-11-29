@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8"> <!-- 문자 인코딩 설정 (UTF-8은 한글과 특수문자를 지원) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 화면 크기 및 비율 설정, 모바일 친화적 -->
+    <title>로 또 복권</title> <!-- 웹 페이지의 제목 -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Noto+Sans+KR:wght@100..900&display=swap');
+    </style>
+    <!-- 구글 폰트에서 Jua, Noto Sans KR, Black Han Sans 폰트를 가져옴 -->
+    <link rel="stylesheet" href="latestWinNum.css"> <!-- 외부 CSS 파일 링크 -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <script src="jquery-3.7.1.js"></script> <!-- jQuery 라이브러리 -->
+    <script src="script.js" defer></script> <!-- 외부 JavaScript 파일 링크 (defer는 HTML이 로드된 후 스크립트 실행) -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyDwZIP7CNex9zvLckwM5xCf0iafsYfAQcE",
+          authDomain: "basicweb-6group.firebaseapp.com",
+          projectId: "basicweb-6group",
+          storageBucket: "basicweb-6group.firebasestorage.app",
+          messagingSenderId: "454084926465",
+          appId: "1:454084926465:web:5c6c52bbe7c837632cf400",
+          measurementId: "G-FHTJY0MMFG"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+</head>
+<body>
+        
+    <header>
+      <!-- 모바일 메뉴 버튼, 화면 크기가 작을 때 보이는 메뉴 -->
+      <div class="mobile_menu" id="mobileMenu">
+          <div class="bar"></div> <!-- 메뉴 바1 -->
+          <div class="bar"></div> <!-- 메뉴 바2 -->
+          <div class="bar"></div> <!-- 메뉴 바3 -->
+      </div>
+      <!-- 내비게이션 메뉴 (전체 메뉴가 담겨있는 부분) -->
+      <nav class="nav-menu" id="navMenu">
+          <a href="index.html" id="menu-logo">로 또 복권</a> <!-- 홈페이지 링크 -->
+          <button class="close-menu" id="closeMenu">X</button> <!-- 메뉴 닫기 버튼 -->
+          <a href="RDNum.html">로또 추첨</a> <!-- 로또 추첨 페이지 링크 -->
+          <a href="latestWinNum.html">로또 회차별 당첨번호</a> <!-- 로또 회차별 당첨번호 페이지 링크 -->
+          <a href="#">로또 당첨확률 높은 번호</a> <!-- 로또 당첨확률 높은 번호 페이지 링크 -->
+          <a href="#">공지사항</a> <!-- 공지사항 페이지 링크 -->
+          <a href="#">언론보도</a> <!-- 언론보도 페이지 링크 -->
+      </nav>
+      <!-- 로고 부분 -->
+      <div class="logo"><a href="index.html" target="_self">로 또 복권</a></div>
+      <!-- 로그인 이미지 부분 -->
+      <div class="login"><a href="#"><img src="images/login.png" alt="로그인 이미지"></a></div>
+    </header>
+
+    <footer>
+        
+    </footer>
+    <!-- 사이트 하단 부분 -->
+</body>
+</html>
