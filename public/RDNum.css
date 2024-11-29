@@ -127,7 +127,7 @@ section#lotto-main{
   justify-content: center;
   width: 100%;
   top: 8.65rem;
-  border: 1px solid #199C6E;
+  border: 0.0625rem solid #199C6E;
   background-color: #199C6E;
   padding: 3rem 3.9rem 3rem 3.9rem;
   gap: 1rem;
@@ -140,7 +140,7 @@ section#lotto-main{
   height: 2rem;
   font-size: 1.155rem;
   border-radius: 50%;
-  border: 1px solid #000;
+  border: 0.0625rem solid #000;
   color: #ffffff;
   text-align: center;
   line-height: 2rem;
@@ -170,14 +170,85 @@ section#lotto-main{
   background-color: #28a745; /* 41~45번은 녹색 */
   border-color: #28a745;
 }
-
-section#lotto-list {
+#lotto-num-results {
   position: relative;
+  top: 4rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+}
+
+#previous-list {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000;
+}
+#lotto-list {
+  position: relative;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 1;
+}
+
+.lotto-draw {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #199C6E;
+  border: 0.0625rem solid #199C6E;
+}
+
+.Previous-draw-info {
   position: relative;
   display: flex;
   justify-content: center;
   width: 100%;
   height: auto;
+  background-color: #1D6E4E;
+  border: 0.0625rem solid #1D6E4E;
+  text-align: center;
+  font-size: 1.25rem;
+  padding-top: 0.25rem;
+}
+
+.Previous-list {
+  position: relative;
+  display: flex;
+  padding: 2rem 4rem 2rem 4rem;
+  gap: 1rem;
+}
+
+.previousTime {
+  font-size: 0.8rem;
+  padding-bottom: 0.5rem;
+}
+
+#button-container {
+  position: relative;
+  top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+}
+#button-container input[type=button] {
+  background-color: #199C6E;
+  border: 0.0625rem solid #199C6E;
+  border-radius: 50%;
+  padding: 0.5rem;
 }
 @media (max-width: 767px) {
   /* 기본 스타일 리셋 */
