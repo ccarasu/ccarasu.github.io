@@ -236,6 +236,13 @@ section#lotto-main{
   padding-bottom: 0.5rem;
 }
 
+#loadingMessage {
+  display: none; 
+  text-align: center; 
+  font-size: 1.25rem; 
+  color: #000;
+}
+
 #button-container {
   position: relative;
   top: 1.5rem;
@@ -243,6 +250,7 @@ section#lotto-main{
   justify-content: center;
   align-items: center;
   gap: 2rem;
+  padding-bottom: 5rem;
 }
 #button-container input[type=button] {
   background-color: #199C6E;

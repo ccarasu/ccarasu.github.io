@@ -90,7 +90,7 @@ $(function () {
       const todayHours = today.getHours(); // 현재 시간
 
       // 토요일 오후 8시 기준
-      if (todayDay === 6 && todayHours < 20) {
+      if (todayDay === 6 && todayHours < 21) {
           return weeksPassed; // 이전 주 회차 반환
       }
       return weeksPassed + 1; // 최신 회차 반환
@@ -109,12 +109,6 @@ $(function () {
               document.querySelectorAll(".round").forEach(element => {
                   element.innerText = `${data.drwNo}회 당첨번호`;
               });
-      
-              // 번호들
-              const lottoNumbers = [
-                  data.drwtNo1, data.drwtNo2, data.drwtNo3, 
-                  data.drwtNo4, data.drwtNo5, data.drwtNo6
-              ];
       
               // 색상 클래스를 추가하는 함수
               function addColorClass(number, span) {
