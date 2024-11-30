@@ -480,7 +480,6 @@ footer {
     padding: 0.9375rem;
     background-color: #199C6E;
   }
-
   .nav-menu.open {
     display: flex;
   }
@@ -499,6 +498,7 @@ footer {
   }
 
   .nav-menu a#menu-logo {
+    display: block;
     font-size: 2.5rem;
     text-align: center;
     width: 100%;
@@ -516,6 +516,10 @@ footer {
     color: #fff;
     padding: 0.625rem;
     z-index: 10000;
+  }
+
+  #closeMenu {
+    display: block;
   }
 
 
