@@ -242,13 +242,17 @@ section#lotto-main{
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5rem;
+  gap: 2rem;
 }
 #button-container input[type=button] {
   background-color: #199C6E;
   border: 0.0625rem solid #199C6E;
   border-radius: 50%;
   padding: 0.5rem;
+}
+
+#button-container p {
+  color: #000;
 }
 @media (max-width: 767px) {
   /* 기본 스타일 리셋 */

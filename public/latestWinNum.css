@@ -166,13 +166,14 @@ body {
     font-size: 24px;
     text-decoration: none;
     color: #fff;
-    border: 1px solid #333;
+    border: 1px solid #fff;
     border-radius: 5px;
     margin-bottom: 5px;
     transition: background-color 0.3s;
   }
 
   .nav-menu a#menu-logo {
+    display: block;
     font-size: 40px;
     text-align: center;
     width: 100%;
@@ -192,7 +193,9 @@ body {
     z-index: 10000;
   }
 
-  
+  #closeMenu {
+    display: block;
+  }
 
   .yellow {
     background-color: #ffc107; /* 1~10번은 노란색 */
