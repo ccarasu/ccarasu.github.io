@@ -426,8 +426,10 @@ footer {
     height: 6.25rem;
     background-color: #199C6E;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
     gap: 5rem;
   }
 

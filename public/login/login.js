@@ -21,7 +21,7 @@ $(function () {
         // 로그인 성공 또는 실패 처리 (예제에서는 간단히 처리)
         if (username === "admin" && password === "1234") {
             alert("로그인 성공! 환영합니다."); // 로그인 성공 메시지
-            window.location.href = "/index.html"; // 메인 페이지로 이동
+            window.location.href = "/public/index.html"; // 메인 페이지로 이동
         } else {
             alert("아이디 또는 비밀번호가 잘못되었습니다."); // 로그인 실패 메시지
         }

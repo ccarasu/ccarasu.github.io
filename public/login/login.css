@@ -1,3 +1,187 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: 'jua', sans-serif;
+    color: #fff;
+  }
+  
+  body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #E4D7B9;
+  }
+  
+  #wrapper {
+    min-height: 100%;
+  }
+  
+  header {
+    width: 100%;
+    height: 6.25rem;
+    background-color: #199C6E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 5rem;
+  }
+  
+  .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    order: -1;
+  }
+  .logo a {
+    text-decoration: none;
+  }
+  .login img {
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  .mobile_menu {
+    display: none;
+  }
+  
+  #menu-logo {
+    display: none;
+  }
+  #closeMenu {
+    display: none;
+  }
+  
+  .nav-menu a{
+    text-decoration: none;
+    padding-left: 0.5rem;
+  }
+
+  /* 메인 섹션 스타일 */
+  main {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* 로그인 상단 영역*/
+.login-container {
+    position: relative;
+    display: flex; /* 플렉스 박스를 사용하여 가로 정렬 */
+    align-items: center; /* 세로축 가운데 정렬 */
+    flex-direction: row; /*가로 정렬 지정*/
+    justify-content: center; /* 기본적으로 텍스트를 중앙 정렬 */
+    background-color: #1D6E4E;
+    width: 100%; /* 가로로 꽉 차도록 설정 */
+    margin: 0; /* 여백 제거 */
+    padding: 0.625rem; /* 내부 여백 추가 */
+}
+#login {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    text-align: center;
+}
+/* 뒤로가기 버튼 스타일 */
+.back-button {
+    background: none; /* 버튼 배경 제거 */
+    border: none; /* 버튼 테두리 제거 */
+    cursor: pointer; /* 클릭 가능한 커서 */
+    padding: 0; /* 내부 여백 제거 */
+    position: absolute; /* 절대 위치 설정*/
+    left: 36.5rem;
+}
+
+.back-button img {
+    width: 1.5rem; /* 아이콘 크기 */
+    height: 1.5rem; /* 아이콘 크기 */
+}
+
+
+main .form-container {
+    margin: 1.25rem auto;
+    max-width: 18.75rem;
+    text-align: left;
+}
+
+/* 아이디와 비밀번호 텍스트(Label)의 색상 수정 */
+main .form-container label {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.313rem;
+    display: block;
+    color: #000; /* 텍스트 색상을 검정색으로 변경 */
+}
+
+main .form-container input {
+    display: block;
+    width: 100%;
+    margin: 0.625rem 0;
+    padding: 0.625rem;
+    font-size: 1rem;
+    border: 0.0625rem solid #fff;
+    border-radius: 0.313rem;
+    background-color: #fff; /* 입력 필드 배경 */
+    color: #000; /* 입력 필드 안의 텍스트 색상 (검정색) */
+}
+
+main .form-container button {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 1.5rem; /* 둥근 버튼 */
+    background-color: #1D6E4E; /* 초록색 버튼 */
+    color: #fff; /* 텍스트 색상 */
+    cursor: pointer;
+    margin-bottom: 0.625rem;
+}
+
+main .form-container button:hover {
+    background-color: #199C6E; /* 버튼 호버 색상 */
+}
+
+/* 회원가입 버튼 스타일 */
+main .form-container .signup-button {
+    background-color: #1D6E4E; /* 초록색 */
+}
+
+main .form-container .signup-button:hover {
+    background-color: #199C6E; /* 버튼 호버 색상 */
+}
+
+
+/* 푸터 스타일 */
+footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    padding-bottom: 5vh;
+    background-color: #199C6E;
+    }
+
+/* SNS 공유 아이콘 스타일 */
+footer ul {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1.25rem;
+    padding-top: 1.5rem;
+    padding-left: 1rem;
+}
+
+footer li input {
+    width: 2rem;
+    height: 2rem;
+}
+footer p {
+    padding-top: 1.5rem;
+    text-align: center;
+}
+
 @media (max-width: 767px) {
     /* 기본 스타일 리셋 */
     * {
@@ -11,12 +195,9 @@
 
     /* 전체 스타일 초기화 */
     body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Arial', sans-serif;
+        width: 100%;
+        min-height: 100vh;
         background-color: #DECEAB; /* 배경 색상 (베이지색) */
-        color: #fff; /* 기본 텍스트 색상 */
-        text-align: center;
     }
   
     /* 헤더 스타일 */
@@ -27,134 +208,11 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 10px 20px;
-        color: #fff; /* 텍스트 색상 */
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
         gap: 5rem;
     }
-  
-    header h1 {
-        font-size: 24px;
-        font-weight: bold;
-        margin: 0;
-    }
-  
-    header .menu-icon,
-    header .profile-icon {
-        font-size: 24px;
-        cursor: pointer;
-    }
     
-    /* 메인 섹션 스타일 */
-    main {
-        margin-top: 20px;
-    }
-    
-    main h2 {
-        background-color: #1A5C3D; /* 초록색 */
-        color: #fff; /* 텍스트 색상 */
-        padding: 10px;
-        margin: 0;
-        font-size: 20px;
-    }
-
-    .header-container {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 20px;
-        width: 100%;
-    }
-
-    /* h2 스타일 */
-    h2 {
-        display: flex; /* 플렉스 박스를 사용하여 가로 정렬 */
-        align-items: center; /* 세로축 가운데 정렬 */
-        justify-content: center; /* 기본적으로 텍스트를 중앙 정렬 */
-        gap: 10px; /* 버튼과 텍스트 사이 간격 */
-        width: 100%; /* 가로로 꽉 차도록 설정 */
-        margin: 0; /* 여백 제거 */
-        padding: 10px; /* 내부 여백 추가 */
-        background-color: #199C6E; /* 배경 색상 (필요 시 제거 가능) */
-        color: #fff; /* 텍스트 색상 */
-        font-size: 24px; /* 글자 크기 */
-        text-align: center; /*텍스트 중앙 정렬 */
-        flex: 1; /*텍스트가 남은공간을 차지하도록 설정*/
-    }
-
-    /* 뒤로가기 버튼 스타일 */
-    .back-button {
-        background: none; /* 버튼 배경 제거 */
-        border: none; /* 버튼 테두리 제거 */
-        cursor: pointer; /* 클릭 가능한 커서 */
-        padding: 0; /* 내부 여백 제거 */
-        position: absolute; /* 절대 위치 설정*/
-        left: 10px; /*왼쪽 끝에 배치*/
-    }
-
-    .back-button img {
-        width: 24px; /* 아이콘 크기 */
-        height: 24px; /* 아이콘 크기 */
-    }
-
-    /* 중앙 텍스트 스타일 */
-    h2 span {
-        flex: 1; /* 남은 공간을 모두 차지하도록 설정 */
-        text-align: center; /* 텍스트 중앙 정렬 */
-    }
-
-    main .form-container {
-        margin: 20px auto;
-        max-width: 300px;
-        text-align: left;
-    }
-    
-    /* 아이디와 비밀번호 텍스트(Label)의 색상 수정 */
-    main .form-container label {
-        font-size: 16px;
-        font-weight: bold;
-        margin-bottom: 5px;
-        display: block;
-        color: #000; /* 텍스트 색상을 검정색으로 변경 */
-    }
-    
-    main .form-container input {
-        display: block;
-        width: 100%;
-        margin: 10px 0;
-        padding: 10px;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        background-color: #f7f7f7; /* 입력 필드 배경 */
-        color: #000; /* 입력 필드 안의 텍스트 색상 (검정색) */
-    }
-    
-    main .form-container button {
-        width: 100%;
-        padding: 12px;
-        font-size: 16px;
-        border: none;
-        border-radius: 25px; /* 둥근 버튼 */
-        background-color: #2f6d42; /* 초록색 버튼 */
-        color: #fff; /* 텍스트 색상 */
-        cursor: pointer;
-        margin-bottom: 10px;
-    }
-    
-    main .form-container button:hover {
-        background-color: #245c38; /* 버튼 호버 색상 */
-    }
-    
-    /* 회원가입 버튼 스타일 */
-    main .form-container .signup-button {
-        background-color: #2f6d42; /* 초록색 */
-    }
-    
-    main .form-container .signup-button:hover {
-        background-color: #245c38; /* 버튼 호버 색상 */
-    }
-
-
     .logo {
         font-size: 1.5rem;
         font-weight: bold;
@@ -245,6 +303,103 @@
     #closeMenu {
         display: block;
     }
+    
+    /* 메인 섹션 스타일 */
+    main {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    
+
+    /* 로그인 상단 영역*/
+    .login-container {
+        position: relative;
+        display: flex; /* 플렉스 박스를 사용하여 가로 정렬 */
+        align-items: center; /* 세로축 가운데 정렬 */
+        flex-direction: row; /*가로 정렬 지정*/
+        justify-content: center; /* 기본적으로 텍스트를 중앙 정렬 */
+        background-color: #1D6E4E;
+        width: 100%; /* 가로로 꽉 차도록 설정 */
+        margin: 0; /* 여백 제거 */
+        padding: 0.625rem; /* 내부 여백 추가 */
+    }
+    #login {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    /* 뒤로가기 버튼 스타일 */
+    .back-button {
+        background: none; /* 버튼 배경 제거 */
+        border: none; /* 버튼 테두리 제거 */
+        cursor: pointer; /* 클릭 가능한 커서 */
+        padding: 0; /* 내부 여백 제거 */
+        position: absolute; /* 절대 위치 설정*/
+        left: 3.5rem;
+    }
+
+    .back-button img {
+        width: 1.5rem; /* 아이콘 크기 */
+        height: 1.5rem; /* 아이콘 크기 */
+    }
+
+
+    main .form-container {
+        margin: 1.25rem auto;
+        max-width: 18.75rem;
+        text-align: left;
+    }
+    
+    /* 아이디와 비밀번호 텍스트(Label)의 색상 수정 */
+    main .form-container label {
+        font-size: 1rem;
+        font-weight: bold;
+        margin-bottom: 0.313rem;
+        display: block;
+        color: #000; /* 텍스트 색상을 검정색으로 변경 */
+    }
+    
+    main .form-container input {
+        display: block;
+        width: 100%;
+        margin: 0.625rem 0;
+        padding: 0.625rem;
+        font-size: 1rem;
+        border: 0.0625rem solid #fff;
+        border-radius: 0.313rem;
+        background-color: #fff; /* 입력 필드 배경 */
+        color: #000; /* 입력 필드 안의 텍스트 색상 (검정색) */
+    }
+    
+    main .form-container button {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 1.5rem; /* 둥근 버튼 */
+        background-color: #1D6E4E; /* 초록색 버튼 */
+        color: #fff; /* 텍스트 색상 */
+        cursor: pointer;
+        margin-bottom: 0.625rem;
+    }
+    
+    main .form-container button:hover {
+        background-color: #199C6E; /* 버튼 호버 색상 */
+    }
+    
+    /* 회원가입 버튼 스타일 */
+    main .form-container .signup-button {
+        background-color: #1D6E4E; /* 초록색 */
+    }
+    
+    main .form-container .signup-button:hover {
+        background-color: #199C6E; /* 버튼 호버 색상 */
+    }
+
 
    /* 푸터 스타일 */
     footer {
@@ -258,6 +413,7 @@
     /* SNS 공유 아이콘 스타일 */
     footer ul {
         display: flex;
+        justify-content: center;
         flex-direction: row;
         gap: 1.25rem;
         padding-top: 1.5rem;
@@ -268,5 +424,8 @@
         width: 2rem;
         height: 2rem;
     }
-
+    footer p {
+        padding-top: 1.5rem;
+        text-align: center;
+    }
 }

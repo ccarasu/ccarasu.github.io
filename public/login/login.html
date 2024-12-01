@@ -9,7 +9,7 @@
     </style>
     <link rel="stylesheet" href="login.css">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <script src="jquery-3.7.1.js"></script>
+    <script src="/public/jquery-3.7.1.js"></script>
     <script src="login.js" defer></script>
 </head>
 <body>
@@ -33,16 +33,16 @@
       <!-- 로고 부분 -->
       <div class="logo"><a href="/public/index.html">로 또 복권</a></div>
       <!-- 로그인 이미지 부분 -->
-      <div class="login"><a href="#"><img src="/public/images/login.png" alt="로그인 이미지"></a></div>
+      <div class="login"><a href="login.html"><img src="/public/images/login.png" alt="로그인 이미지"></a></div>
       </header>
     <main>
         <section id="lotto-login-main">
-            <h2>
+            <div class="login-container">
                 <button type="button" class="back-button">
                     <img src="/public/images/backbutton.png" alt="뒤로가기">
                 </button>
-                로그인
-            </h2>
+                <div id="login">로그인</div>
+            </div>
             <div class="form-container">
                 <!-- 아이디 입력 -->
                 <label for="username">아이디</label>
@@ -53,7 +53,7 @@
                 <!-- 로그인 버튼 -->
                 <button type="submit">로그인</button>
                 <!-- 회원가입 버튼 -->
-                <button type="button" class="signup-button">회원가입</button>
+                <a href="/public/join/join.html"><button type="button" class="signup-button">회원가입</button></a>
             </div>
         </section>
     </main>

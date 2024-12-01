@@ -48,7 +48,7 @@ $(function () {
 
         // 회원가입 성공 처리
         alert("회원가입이 완료되었습니다!");
-        window.location.href = "/index.html"; // 메인 페이지로 이동
+        window.location.href = "/public/index.html"; // 메인 페이지로 이동
     });
 
     // 뒤로가기 버튼 클릭 이벤트
