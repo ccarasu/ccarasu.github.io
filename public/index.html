@@ -11,10 +11,10 @@
         @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Noto+Sans+KR:wght@100..900&display=swap');
     </style>
     <!-- 구글 폰트에서 Jua, Noto Sans KR, Black Han Sans 폰트를 가져옴 -->
-    <link rel="stylesheet" href="css/style.css"> <!-- 외부 CSS 파일 링크 -->
+    <link rel="stylesheet" href="style.css"> <!-- 외부 CSS 파일 링크 -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <script src="js/jquery-3.7.1.js"></script> <!-- jQuery 라이브러리 -->
-    <script src="js/script.js" defer></script> <!-- 외부 JavaScript 파일 링크 (defer는 HTML이 로드된 후 스크립트 실행) -->
+    <script src="jquery-3.7.1.js"></script> <!-- jQuery 라이브러리 -->
+    <script src="script.js" defer></script> <!-- 외부 JavaScript 파일 링크 (defer는 HTML이 로드된 후 스크립트 실행) -->
 </head>
 <body>
     <!-- 사이트 상단 부분 -->
@@ -30,8 +30,8 @@
             <nav class="nav-menu" id="navMenu">
                 <a href="index.html" id="menu-logo">로 또 복권</a> <!-- 홈페이지 링크 -->
                 <button class="close-menu" id="closeMenu">X</button> <!-- 메뉴 닫기 버튼 -->
-                <a href="pages/RDNum.html">로또 추첨</a> <!-- 로또 추첨 페이지 링크 -->
-                <a href="pages/latestWinNum.html">로또 회차별 당첨번호</a> <!-- 로또 회차별 당첨번호 페이지 링크 -->
+                <a href="RDNum.html">로또 추첨</a> <!-- 로또 추첨 페이지 링크 -->
+                <a href="latestWinNum.html">로또 회차별 당첨번호</a> <!-- 로또 회차별 당첨번호 페이지 링크 -->
                 <a href="#">로또 당첨확률 높은 번호</a> <!-- 로또 당첨확률 높은 번호 페이지 링크 -->
                 <a href="#">공지사항</a> <!-- 공지사항 페이지 링크 -->
                 <a href="#">언론보도</a> <!-- 언론보도 페이지 링크 -->
@@ -39,12 +39,12 @@
             <!-- 로고 부분 -->
             <div class="logo"><a href="index.html">로 또 복권</a></div>
             <!-- 로그인 이미지 부분 -->
-            <div class="login"><a href="pages/login.html"><img src="images/login.png" alt="로그인 이미지"></a></div>
+            <div class="login"><a href="login.html"><img src="images/login.png" alt="로그인 이미지"></a></div>
         </header>
         <section id="sct1">
             <ul class="quick_button">
-                <li><a href="pages/RDNum.html"><input type="button" value="번호 생성"></a></li> <!-- 번호 생성 버튼 -->
-                <li><a href="pages/latestWinNum.html"><input type="button" value="당첨 확인"></a></</li> <!-- 당첨 확인 버튼 -->
+                <li><a href="RDNum.html"><input type="button" value="번호 생성"></a></li> <!-- 번호 생성 버튼 -->
+                <li><a href="latestWinNum.html"><input type="button" value="당첨 확인"></a></</li> <!-- 당첨 확인 버튼 -->
                 <li><a href="#"><input type="button" value="로또 통계"></a></li> <!-- 로또 통계 버튼 -->
             </ul>
         </section>
