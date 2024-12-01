@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Noto+Sans+KR:wght@100..900&display=swap');
+    </style>
+    <link rel="stylesheet" href="join.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <script src="jquery-3.7.1.js"></script>
+    <script src="join.js" defer></script>
+
+</head>
+<body>
+    <header>
+        <!-- 모바일 메뉴 버튼, 화면 크기가 작을 때 보이는 메뉴 -->
+        <div class="mobile_menu" id="mobileMenu">
+          <div class="bar"></div> <!-- 메뉴 바1 -->
+          <div class="bar"></div> <!-- 메뉴 바2 -->
+          <div class="bar"></div> <!-- 메뉴 바3 -->
+      </div>
+      <!-- 내비게이션 메뉴 (전체 메뉴가 담겨있는 부분) -->
+      <nav class="nav-menu" id="navMenu">
+          <a href="/index.html" id="menu-logo">로 또 복권</a> <!-- 홈페이지 링크 -->
+          <button class="close-menu" id="closeMenu">X</button> <!-- 메뉴 닫기 버튼 -->
+          <a href="RDNum.html">로또 추첨</a> <!-- 로또 추첨 페이지 링크 -->
+          <a href="#">로또 회차별 당첨번호</a> <!-- 로또 회차별 당첨번호 페이지 링크 -->
+          <a href="#">로또 당첨확률 높은 번호</a> <!-- 로또 당첨확률 높은 번호 페이지 링크 -->
+          <a href="#">공지사항</a> <!-- 공지사항 페이지 링크 -->
+          <a href="#">언론보도</a> <!-- 언론보도 페이지 링크 -->
+      </nav>
+      <!-- 로고 부분 -->
+      <div class="logo"><a href="index.html">로 또 복권</a></div>
+      <!-- 로그인 이미지 부분 -->
+      <div class="login"><a href="#"><img src="icon/loginlogo.png" alt="로그인 이미지"></a></div>
+      </header>
+    <main>
+        <section id="lotto-signup-main">
+            <h2>
+                <button type="button" class="back-button">
+                    <img src="icon/backbutton.png" alt="뒤로가기">
+                </button>
+                회원가입
+            </h2>
+            <div class="form-container">
+                <!-- 아이디 입력 -->
+                <label for="username">아이디</label>
+                <input type="text" id="username" placeholder="아이디 입력(20자 이하 알파벳, 숫자만 가능)">
+                <!--이메일 주소 입력-->
+                <label for="email">이메일 주소</label>
+                <input type="text" id="email" placeholder="example@email.com">
+                <!-- 비밀번호 입력 -->
+                <label for="password">비밀번호</label>
+                <input type="password" id="password" placeholder="비밀번호 입력(문자, 숫자, 특수문자 포함 8~20자)">
+                <!-- 비밀번호 확인 -->
+                 <label for="password-check">비밀번호 확인</label>
+                 <input type="password" id="password-check" placeholder="비밀번호 재입력">
+                <!-- 회원가입 버튼 -->
+                <button type="button" class="signup-button">회원가입</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <!-- 하단 푸터 -->
+        <div class="share_sns">
+            <ul>
+                <li><input type="image" src="icon/kakaologo.png" alt="카카오톡"></li> <!-- 카카오톡 공유 아이콘 -->
+                <li><input type="image" src="icon/messengerlogo.png" alt="메신저"></li> <!-- 메신저 공유 아이콘 -->
+                <li><input type="image" src="icon/instalogo.png" alt="인스타"></li> <!-- 인스타그램 공유 아이콘 -->
+                <li><input type="image" src="icon/tictoklogo.png" alt="틱톡"></li> <!-- 틱톡 공유 아이콘 -->
+                <li><input type="image" src="icon/morelogo.png" alt="더보기"></li>
+            </ul>
+        </div>
+        <!-- SNS 공유 기능 (각각의 SNS로 콘텐츠를 공유할 수 있는 아이콘들) -->
+        <p><small>Copyright©2024 로 또 복권. All Rights Reserved.</small></p>
+
+    </footer>
+</body>
+</html>
