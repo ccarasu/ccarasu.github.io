@@ -1,7 +1,7 @@
+// Firebase 초기화 (변경 없음)
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
-import { getDatabase, ref, push, query, orderByChild, limitToLast, limitToFirst, startAfter, endBefore, onValue } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js';
+import { getDatabase, ref, onValue, query, orderByChild, limitToLast, startAfter, endBefore, push } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js';
 
-// Firebase 초기화
 const firebaseConfig = {
   apiKey: "AIzaSyDwZIP7CNex9zvLckwM5xCf0iafsYfAQcE",
   authDomain: "basicweb-6group.firebaseapp.com",
@@ -17,25 +17,14 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
+// 상태 변수
 let lastVisibleKey = null;  // 마지막 데이터 키
 let firstVisibleKey = null; // 첫 번째 데이터 키
-let pageNumber = 1;
-const maxPage = 50;
-let isLoading = false;
+let isLoading = false; // 로딩 상태
+let allDrawsLoaded = false; // 모든 데이터 로드 여부
 
 $(function () {
-  // 햄버거 메뉴 토글
-  $(".mobile_menu").click(function () {
-    $(".nav-menu").toggleClass("open");
-    $("body").css("overflow", $(".nav-menu").hasClass("open") ? "hidden" : "auto");
-  });
-
-  $("#closeMenu").click(function () {
-    $(".nav-menu").removeClass("open");
-    $("body").css("overflow", "auto");
-  });
-
-  // 로또 번호 생성
+  // 로또 번호 생성 (변경 없음)
   $("#CreateNumber").click(function () {
     const lotto_numbers = document.getElementById('lotto-numbers');
     lotto_numbers.innerHTML = '';
@@ -65,7 +54,7 @@ $(function () {
 
     const generatedTime = new Date();
     const year = generatedTime.getFullYear();
-    const month = (generatedTime.getMonth() + 1).toString().padStart(2, '0'); // 월은 0부터 시작하므로 1을 더함
+    const month = (generatedTime.getMonth() + 1).toString().padStart(2, '0');
     const day = generatedTime.getDate().toString().padStart(2, '0');
     const hours = generatedTime.getHours().toString().padStart(2, '0');
     const minutes = generatedTime.getMinutes().toString().padStart(2, '0');
@@ -88,59 +77,45 @@ $(function () {
       .catch(error => console.error("데이터 저장 실패: ", error));
   });
 
-  // 초기 데이터 로드
+  // 데이터 로드
   loadInitialDraws();
 
-  // 실시간 데이터 반영
-  const drawsRef = ref(database, "lottoDraws");
-  onValue(drawsRef, (snapshot) => {
-    const drawsData = snapshot.val();
-    if (drawsData) {
-      const drawsArray = Object.entries(drawsData).map(([key, value]) => ({ key, ...value }));
-      displayPreviousDraws(drawsArray);
-    }
-  });
-
-  // 다음 버튼
+  // "다음" 버튼 클릭
   $("#nextPage").click(function () {
-    if (!isLoading){
-      pageNumber++;
+    if (!isLoading && !allDrawsLoaded) {
       loadNextDraws();
     }
-    
   });
 
-  // 이전 버튼
+  // "이전" 버튼 클릭
   $("#prevPage").click(function () {
-    if (!isLoading && pageNumber) {
-      pageNumber--;
+    if (!isLoading && firstVisibleKey) {
       loadPreviousDraws();
     }
   });
 });
 
-// 초기 데이터 로드
+// 초기 데이터 로드: 최신 5개
 function loadInitialDraws() {
   const initialQuery = query(
-    ref(database, "lottoDraws"), 
-    orderByChild("createdAt"), 
-    limitToLast(5)
+    ref(database, "lottoDraws"),
+    orderByChild("createdAt"),
+    limitToLast(5) // 최신 5개 데이터 가져오기
   );
-  
+
   onValue(initialQuery, (snapshot) => {
     const drawsData = snapshot.val();
     if (drawsData) {
       const drawsArray = Object.entries(drawsData).map(([key, value]) => ({ key, ...value }));
-      drawsArray.reverse(); 
+      drawsArray.reverse(); // 가장 최근 데이터가 상단에 오도록 정렬
       firstVisibleKey = drawsArray[0].key;
       lastVisibleKey = drawsArray[drawsArray.length - 1].key;
-      displayPreviousDraws(drawsArray);
-      pageNumber = 1; 
-      checkPrevButtonVisibility();
+      displayPreviousDraws(drawsArray); // 화면에 데이터 표시
     }
-  }, { onlyOnce: true });
+  });
 }
 
+// "다음 버튼" 클릭 시 이전 5개 데이터 추가 로드
 function loadNextDraws() {
   if (!lastVisibleKey || isLoading) return;
   isLoading = true;
@@ -148,8 +123,8 @@ function loadNextDraws() {
   const nextQuery = query(
     ref(database, "lottoDraws"),
     orderByChild("createdAt"),
-    startAfter(lastVisibleKey), // 현재 마지막 데이터 이후의 데이터를 가져옴
-    limitToFirst(5) // 다음 5개
+    endBefore(lastVisibleKey), // 마지막 데이터 이전
+    limitToLast(5) // 이전 5개 데이터
   );
 
   onValue(nextQuery, (snapshot) => {
@@ -159,27 +134,26 @@ function loadNextDraws() {
       if (drawsArray.length > 0) {
         firstVisibleKey = drawsArray[0].key;
         lastVisibleKey = drawsArray[drawsArray.length - 1].key;
-        displayPreviousDraws(drawsArray);
-        pageNumber++;
-        updatePageNumber();
-        checkPrevButtonVisibility();
+        displayPreviousDraws(drawsArray.reverse()); // 데이터 표시
       } else {
+        allDrawsLoaded = true; // 더 이상 데이터가 없으면 플래그 설정
         alert("더 이상 데이터가 없습니다.");
       }
     }
     isLoading = false;
-  }, { onlyOnce: true });
+  });
 }
 
+// "이전 버튼" 클릭 시 다음 5개 데이터 로드
 function loadPreviousDraws() {
-  if (!lastVisibleKey || isLoading || pageNumber === 1) return;
+  if (!firstVisibleKey || isLoading) return;
   isLoading = true;
 
   const prevQuery = query(
     ref(database, "lottoDraws"),
     orderByChild("createdAt"),
-    endBefore(lastVisibleKey), // 현재 마지막 데이터를 기준으로 이전 데이터를 가져옴
-    limitToLast(5) // 이전 5개
+    startAfter(firstVisibleKey), // 첫 번째 데이터 이후
+    limitToLast(5) // 이후 데이터 최대 5개
   );
 
   onValue(prevQuery, (snapshot) => {
@@ -187,26 +161,24 @@ function loadPreviousDraws() {
     if (drawsData) {
       const drawsArray = Object.entries(drawsData).map(([key, value]) => ({ key, ...value }));
       if (drawsArray.length > 0) {
-        // 이전 데이터의 마지막 키를 업데이트
         firstVisibleKey = drawsArray[0].key;
         lastVisibleKey = drawsArray[drawsArray.length - 1].key;
-        displayPreviousDraws(drawsArray.reverse()); // 역순으로 표시
-        pageNumber--;
-        updatePageNumber();
-        checkPrevButtonVisibility();
+        displayPreviousDraws(drawsArray.reverse()); // 데이터 표시
       } else {
         alert("더 이상 이전 데이터가 없습니다.");
       }
     }
     isLoading = false;
-  }, { onlyOnce: true });
+  });
 }
 
+// 데이터 표시 함수
 function displayPreviousDraws(drawsArray) {
   const lottoListDiv = document.getElementById("lotto-list");
-  lottoListDiv.innerHTML = '';
+  lottoListDiv.innerHTML = ''; // 기존 데이터 삭제
 
   const sortedDraws = drawsArray.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
   sortedDraws.forEach(draw => {
     const drawDiv = document.createElement("div");
     drawDiv.className = "lotto-draw";
@@ -236,12 +208,9 @@ function displayPreviousDraws(drawsArray) {
 
     lottoListDiv.appendChild(drawDiv);
   });
-
-  checkPrevButtonVisibility();
-  updatePageNumber();
 }
 
-// 볼 색상 계산
+// 볼 색상 계산 함수
 function getBallColor(number) {
   if (number >= 1 && number <= 10) return 'yellow';
   if (number >= 11 && number <= 20) return 'blue';
@@ -250,15 +219,7 @@ function getBallColor(number) {
   if (number >= 41 && number <= 45) return 'green';
 }
 
-function checkPrevButtonVisibility() {
-  $("#prevPage").prop("disabled", pageNumber === 1);
-  $("#nextPage").prop("disabled", pageNumber >= maxPage);
-}
-
-function updatePageNumber() {
-  document.getElementById("pageNumber").textContent = `${pageNumber}/${maxPage}`;
-}
-
+// 로또 주차 계산
 function getLottoWeekNumber() {
   const today = new Date();
   const firstLottoDate = new Date('2002-12-07');

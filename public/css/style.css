@@ -397,6 +397,11 @@ footer {
     height: 2rem;
 }
 
+footer p {
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
 /* 모바일 화면을 위한 CSS */
 @media (max-width: 767px) {
   /* 기본 스타일 리셋 */
