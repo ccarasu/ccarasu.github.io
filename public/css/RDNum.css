@@ -236,12 +236,6 @@ section#lotto-main{
   padding-bottom: 0.5rem;
 }
 
-#loadingMessage {
-  display: none; 
-  text-align: center; 
-  font-size: 1.25rem; 
-  color: #000;
-}
 
 #button-container {
   position: relative;
