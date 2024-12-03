@@ -8,10 +8,10 @@
         @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Noto+Sans+KR:wght@100..900&display=swap');
     </style>
     <!-- 구글 폰트에서 Jua, Noto Sans KR, Black Han Sans 폰트를 가져옴 -->
-    <link rel="stylesheet" href="../css/notice.css"> <!-- 외부 CSS 파일 링크 -->
+    <link rel="stylesheet" href="../css/notice-view.css"> <!-- 외부 CSS 파일 링크 -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <script src="../js/jquery-3.7.1.js"></script> <!-- jQuery 라이브러리 -->
-    <script src="../js/notice.js" defer></script> <!-- 외부 JavaScript 파일 링크 (defer는 HTML이 로드된 후 스크립트 실행) -->
+    <script src="../js/notice-view.js" defer></script> <!-- 외부 JavaScript 파일 링크 (defer는 HTML이 로드된 후 스크립트 실행) -->
 
 </head>
 <body>
@@ -38,40 +38,16 @@
       <div class="login"><a href="login.html"><img src="../images/login.png" alt="로그인 이미지"></a></div>
     </header>
     <main>
-        <section id="notices">
-            <div id="notice-top">
-                <button type="button" class="back-button">
-                    <img src="../images/backbutton.png" alt="뒤로가기">
-                </button>
-                <div id="notice">공지사항</div>
-            </div>
-            <div id="search-container">
-                <span id="search-list">
-                    <input type="radio" name="selector" checked>전체
-                    <input type="radio" name="selector">제목
-                    <input type="radio" name="selector">내용
-                </span>
-                <span id="search-box">
-                    <input type="text" name="search" id="search" placeholder="검색">
-                    <button type="submit">조회</button>
-                </span>
-            </div>
-            <div id="notice-wrap">
-                <table border="1">
-                    <thead>
-                        <tr>
-                            <td>번호</td>
-                            <td>글제목</td>
-                            <td>작성자</td>
-                            <td>등록일</td>
-                            <td>조회수</td>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-                <button><a href="notice-write.html">글 쓰기</a></button>
-            </div>
-        </section>
+        <h2>작성한 게시글</h2>
+
+        <form id="ViewForm">
+          <div id="subject">제목 : </div>
+          <div id="writer">작성자 : </div>
+          <div id="date">작성일 : </div>
+          <div id="content">내용 : </div>
+        </form>
+        <button id="modify">수정</button>
+        <button><a href="notice.html">뒤로가기</a></button>
     </main>
     <footer>
         <div class="share_sns">
