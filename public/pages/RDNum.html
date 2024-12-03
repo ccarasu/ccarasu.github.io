@@ -58,33 +58,41 @@
   <div class="login"><a href="login.html"><img src="../images/login.png" alt="로그인 이미지"></a></div>
   </header>
   <!--웹 페이지 상단 부분-->
-
-  <section id="lotto-main">
-    <div id="lotto-simulator">로또 번호 생성기</div>
-    <ul class="quick-button">
-      <li id="CreateNumber"><input type="button" value="번호 생성"></li> <!-- 번호 생성 버튼 -->
-      <li><a href="latestWinNum.html"><input type="button" value="당첨 확인"></a></li> <!-- 당첨 확인 버튼 -->
-      <li><a href="#"><input type="button" value="로또 통계"></a></li> <!-- 로또 통계 버튼 -->
-    </ul>
-    <div id="lotto-container">
-      <div id="lotto-draw-info"></div>
-      <div id="lotto-numbers"></div>
-      <div id="lotto-time"></div>
-    </div>
-  </section>
-  <!--로또 번호 생성 구역-->
+  <main>
+    <section id="lotto-main">
+      <div id="lotto-simulator">로또 번호 생성기</div>
+      <ul class="quick-button">
+        <li id="CreateNumber"><input type="button" value="번호 생성"></li> <!-- 번호 생성 버튼 -->
+        <li><a href="latestWinNum.html"><input type="button" value="당첨 확인"></a></li> <!-- 당첨 확인 버튼 -->
+        <li><a href="#"><input type="button" value="로또 통계"></a></li> <!-- 로또 통계 버튼 -->
+      </ul>
+      <div id="lotto-container">
+        <div id="lotto-draw-info"></div>
+        <div id="lotto-numbers"></div>
+        <div id="lotto-time"></div>
+      </div>
+    </section>
+    <!--로또 번호 생성 구역-->
   
-  <section id="lotto-num-results">
-    <div id="previous-list">로또번호생성기 내역</div>
-    <div id="lotto-list">
-
+    <section id="lotto-num-results">
+      <div id="previous-list">로또번호생성기 내역</div>
+      <div id="lotto-list">
+  
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="share_sns">
+      <ul>
+          <li><input type="image" src="../images/kakaologo.png" alt="카카오톡"></li> <!-- 카카오톡 공유 아이콘 -->
+          <li><input type="image" src="../images/messengerlogo.png" alt="메신저"></li> <!-- 메신저 공유 아이콘 -->
+          <li><input type="image" src="../images/instalogo.png" alt="인스타"></li> <!-- 인스타그램 공유 아이콘 -->
+          <li><input type="image" src="../images/ticktoklogo.png" alt="틱톡"></li> <!-- 틱톡 공유 아이콘 -->
+          <li><input type="image" src="../images/morebutton.png" alt="더보기"></li> <!--더보기 아이콘-->
+      </ul>
     </div>
-    <div id="button-container">
-      <input type="button" value="이전" id="prevPage">
-      <p  id="pageNumber"></p>
-      <input type="button" value="다음" id="nextPage">
-    </div>
-  </section>
-  <footer></footer>
+    <!-- SNS 공유 기능 (각각의 SNS로 콘텐츠를 공유할 수 있는 아이콘들) -->
+    <p><small>Copyright©2024 로 또 복권. All Rights Reserved.</small></p>
+  </footer>
 </body>
 </html>

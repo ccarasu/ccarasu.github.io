@@ -92,7 +92,7 @@ main {
     cursor: pointer; /* 클릭 가능한 커서 */
     padding: 0; /* 내부 여백 제거 */
     position: absolute; /* 절대 위치 설정*/
-    left: 33.5rem;
+    left: 36.5rem;
 }
 
 .back-button img {
@@ -101,21 +101,13 @@ main {
 }
 
 
-.join-container {
-    display: flex;
-    align-items: center;
-    gap: 0.625rem;
-    margin-bottom: 1.25rem;
-    width: 100%;
-}
-
 
 main .form-container {
     width: 90%;
     max-width: 25rem;
     margin: 0 auto;
     background-color: transparent;
-    padding: 0;
+    padding: 1.5rem;
     border-radius: 0;
     box-shadow: none;
 }
