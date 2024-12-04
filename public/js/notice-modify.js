@@ -1,81 +1,129 @@
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
+import { getDatabase, ref, update, get } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDwZIP7CNex9zvLckwM5xCf0iafsYfAQcE",
+  authDomain: "basicweb-6group.firebaseapp.com",
+  databaseURL: "https://basicweb-6group-default-rtdb.firebaseio.com",
+  projectId: "basicweb-6group",
+  storageBucket: "basicweb-6group.firebasestorage.app",
+  messagingSenderId: "454084926465",
+  appId: "1:454084926465:web:5c6c52bbe7c837632cf400",
+  measurementId: "G-FHTJY0MMFG"
+};
+
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+
+// 햄버거 메뉴 처리
 $(function() {
-  // 햄버거 메뉴 클릭 시 메뉴 열기/닫기
   $(".mobile_menu").click(function () {
-    $(".nav-menu").toggleClass("open"); // nav-menu에 'open' 클래스를 토글하여 메뉴 열고 닫기
+    $(".nav-menu").toggleClass("open");
     $("body").css("overflow", $(".nav-menu").hasClass("open") ? "hidden" : "auto");
   });
 
-  // X 버튼 클릭 시 메뉴 닫기
   $("#closeMenu").click(function () {
-    $(".nav-menu").removeClass("open"); // nav-menu에서 'open' 클래스를 제거하여 메뉴 닫기
-    $("body").css("overflow", "auto"); // 메뉴가 닫히면 body의 overflow를 'auto'로 복원하여 스크롤이 가능하도록 함
+    $(".nav-menu").removeClass("open");
+    $("body").css("overflow", "auto");
   });
-  
 });
 
 const modifyForm = document.querySelector("#modifyForm");
 const modifyFormList = document.querySelectorAll("#modifyForm > div");
-const idx = location.search;
-const index = location.search.split("=")[1];
-const noticesObj = JSON.parse(localStorage.getItem("notices"));
-const notice = noticesObj[index];
 
-//게시글의 데이터 값 출력
-for (let i=0; i< modifyFormList.length; i++) {
-  const element = modifyFormList[i].childNodes[1];
-  const id = element.name;
-  element.value = notice[id];
+// URL에서 key 값 추출
+const urlParams = new URLSearchParams(location.search);
+const key = urlParams.get("key");
+
+if (!key) {
+  console.log("Key not found in URL");
+  location.href = "notice.html";  // 목록 페이지로 리다이렉션
 }
 
-//작성한 입력 값이 빈 값인지 검사
-const isEmpty = (subject, writer, content) => {
-  if (subject.length === 0) throw new Error("제목을 입력해주세요");
-  if (writer.length === 0) throw new Error("작성자를 입력해주세요");
-  if (content.length === 0) throw new Error("내용을 입력해주세요");
-};
+// Firebase에서 notices 데이터 가져오기
+const noticesRef = ref(database, 'notices');
+get(noticesRef).then((snapshot) => {
+  if (snapshot.exists()) {
+    const noticesObj = snapshot.val();
+    
+    const notice = noticesObj[key];
 
-//현재 날짜 반환 함수
-const recordDate = () => {
-  const date = new Date();
-  const yyyy = date.getFullYear();
-  let mm = date.getMonth() + 1;
-  let dd = date.getDate();
+    if (notice) {
+      // 게시글의 데이터 값 출력
+      for (let i = 0; i < modifyFormList.length; i++) {
+        const element = modifyFormList[i].childNodes[1];
+        const id = element.name;
+        element.value = notice[id];
+      }
 
-  mm = (mm > 9 ? "" : 0) + mm;
-  dd = (dd > 9 ? "" : 0) + dd;
+      // 작성한 입력 값이 빈 값인지 검사
+      const isEmpty = (subject, writer, content) => {
+        if (subject.length === 0) throw new Error("제목을 입력해주세요");
+        if (writer.length === 0) throw new Error("작성자를 입력해주세요");
+        if (content.length === 0) throw new Error("내용을 입력해주세요");
+      };
 
-  const arr = [yyyy, mm, dd];
-  
-  return arr.join("-");
-}
-const modifyHandler = (e) => {
-  e.preventDefault();
-  const subject = e.target.subject.value;
-  const writer = e.target.writer.value;
-  const content = e.target.content.value;
+      // 현재 날짜 반환 함수
+      const recordDate = () => {
+        const date = new Date();
+        const yyyy = date.getFullYear();
+        let mm = date.getMonth() + 1;
+        let dd = date.getDate();
 
-  try {
-    isEmpty(subject, writer, content);
-    notice.subject = subject;
-    notice.writer = writer;
-    notice.content = content;
-    notice.date = recordDate();
+        mm = (mm > 9 ? "" : 0) + mm;
+        dd = (dd > 9 ? "" : 0) + dd;
 
-    const noticesStr = JSON.stringify(noticesObj);
-    localStorage.setItem("notices", noticesStr);
-    location.href = "notice-view.html" + idx;
-  } catch (e) {
-    alert(e.message);
-    console.error(e);
+        const arr = [yyyy, mm, dd];
+
+        return arr.join("-");
+      };
+
+      const modifyHandler = (e) => {
+        e.preventDefault();
+        const subject = e.target.subject.value;
+        const writer = e.target.writer.value;
+        const content = e.target.content.value;
+
+        try {
+          isEmpty(subject, writer, content);
+
+          // 공지사항 객체 수정
+          notice.subject = subject;
+          notice.writer = writer;
+          notice.content = content;
+          notice.date = recordDate();
+
+          // Firebase에서 공지사항 업데이트
+          update(ref(database, 'notices/' + key), notice).then(() => {
+            location.href = "notice-view.html?key=" + key; // 수정된 후 상세 페이지로 이동
+          }).catch((error) => {
+            console.error("Error updating notice:", error);
+            alert("공지사항 업데이트에 실패했습니다.");
+          });
+
+        } catch (e) {
+          alert(e.message);
+          console.error(e);
+        }
+      };
+
+      const backBtn = document.querySelector("#back");
+
+      // 뒤로가기 버튼
+      const backBtnHandler = (e) => {
+        const previousPage = document.referrer || "notice.html"; // 이전 페이지가 없으면 목록 페이지로 리다이렉션
+        location.href = previousPage;
+      };
+
+      modifyForm.addEventListener("submit", modifyHandler);
+      backBtn.addEventListener("click", backBtnHandler);
+
+    } else {
+      console.log("No notice found for key:", key);
+    }
+  } else {
+    console.log("No data available");
   }
-};
-
-const backBtn = document.querySelector("#back");
-
-//뒤로가기 버튼
-const backBtnHandler = (e) => {
-  location.href = document.referrer;
-};
-
-modifyForm.addEventListener("submit", modifyHandler);
-backBtn.addEventListener("click", backBtnHandler);
+}).catch((error) => {
+  console.error(error);
+});

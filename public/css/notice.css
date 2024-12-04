@@ -33,6 +33,7 @@ header {
 }
 .logo a {
   text-decoration: none;
+  color: #fff;
 }
 .login img {
   width: 2rem;
@@ -53,6 +54,7 @@ header {
 .nav-menu a{
   text-decoration: none;
   padding-left: 0.5rem;
+  color: #fff;
 }
 
 main {
@@ -61,10 +63,125 @@ main {
   flex-direction: column;
 }
 
+#notices {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+#notice-top {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  background-color: #1D6E4E;
+  width: 100%;
+  height: 3rem;
+}
+#notice {
+  font-size: 1.8rem;
+  text-align: center;
+  line-height: 3rem;
+  color: #FFF;
+}
+/* 뒤로가기 버튼 스타일 */
+.back-button {
+  background: none; /* 버튼 배경 제거 */
+  border: none; /* 버튼 테두리 제거 */
+  cursor: pointer; /* 클릭 가능한 커서 */
+  padding: 0; /* 내부 여백 제거 */
+  position: absolute; /* 절대 위치 설정*/
+  top: 0.85rem;
+  left: 20rem;
+}
+
+.back-button img {
+  width: 1.25rem; /* 아이콘 크기 */
+  height: 1.25rem; /* 아이콘 크기 */
+}
+
+#search-container {
+  background-color: #1D6E4E;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 4.5rem;
+  padding-left: 21rem;
+}
+
+#search-list {
+  font-size: 1rem;
+  padding-bottom: 0.25rem;
+}
+#search {
+  width: 20rem;
+  height: 2rem;
+  border: none;
+  border-radius: 0.15rem;
+  padding-left: 0.5rem;
+  color: #000;
+}
+#search-box button {
+  width: 5rem;
+  height: 2rem;
+  border: none;
+  background-color: #199C6E;
+  border-radius: 0.15rem;
+}
+
+#notice-wrap {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 35rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+#notice-wrap table {
+  border-collapse: collapse;
+  width: 80%;
+  height: 5rem;
+  border-color: #199C6E;
+  text-align: center;
+  margin-top: 1rem;
+}
+#notice-wrap thead {
+  background-color: #199C6E;
+  color: #FFF;
+}
+#notice-wrap td {
+  padding: 0.313rem;
+}
+
+#notice-wrap tbody tr td,a{
+  color: #000;
+  text-decoration: none;
+}
+#notice-wrap button {
+  margin-top: 0.8rem;
+  width: 8rem;
+  height: 2rem;
+  background-color: #199C6E;
+  border: none;
+  border-radius: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#notice-wrap button a {
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.25rem;
+  color: #FFF;
+}
 
 /* 푸터 스타일 */
 footer {
-  position: relative;
   width: 100%;
   height: 15rem;
   bottom: 0;
@@ -132,6 +249,7 @@ footer p {
 
   .logo a {
     text-decoration: none;
+    color: #FFF;
   }
 
   /* 로그인 이미지 스타일 */
@@ -267,9 +385,7 @@ footer p {
     flex-direction: column;
     width: 100%;
     height: 4.5rem;
-    padding-top: 0.2rem;
-    padding-left: 2.5rem;
-
+    padding-top: 0.5rem;
   }
 
   #search-list {
@@ -297,8 +413,47 @@ footer p {
     display: flex;
     width: 100%;
     height: 35rem;
+    flex-direction: column;
+    align-items: center;
   }
 
+  #notice-wrap table {
+    border-collapse: collapse;
+    width: 90%;
+    border-color: #199C6E;
+    text-align: center;
+  }
+  #notice-wrap thead {
+    background-color: #199C6E;
+    color: #FFF;
+  }
+  #notice-wrap td {
+    padding: 0.313rem;
+  }
+
+  #notice-wrap tbody tr td,a{
+    color: #000;
+    text-decoration: none;
+  }
+  #notice-wrap button {
+    margin-top: 0.8rem;
+    width: 8rem;
+    height: 2rem;
+    background-color: #199C6E;
+    border: none;
+    border-radius: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #notice-wrap button a {
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.25rem;
+    color: #FFF;
+  }
+  
    /* 푸터 스타일 */
   footer {
     width: 100%;

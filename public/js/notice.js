@@ -1,3 +1,20 @@
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
+import { getDatabase, ref, onValue, set, push } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js';
+const firebaseConfig = {
+  apiKey: "AIzaSyDwZIP7CNex9zvLckwM5xCf0iafsYfAQcE",
+  authDomain: "basicweb-6group.firebaseapp.com",
+  databaseURL: "https://basicweb-6group-default-rtdb.firebaseio.com",
+  projectId: "basicweb-6group",
+  storageBucket: "basicweb-6group.firebasestorage.app",
+  messagingSenderId: "454084926465",
+  appId: "1:454084926465:web:5c6c52bbe7c837632cf400",
+  measurementId: "G-FHTJY0MMFG"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const noticesRef = ref(db, "notices")
+
 $(function() {
   // 햄버거 메뉴 클릭 시 메뉴 열기/닫기
   $(".mobile_menu").click(function () {
@@ -11,18 +28,11 @@ $(function() {
     $("body").css("overflow", "auto"); // 메뉴가 닫히면 body의 overflow를 'auto'로 복원하여 스크롤이 가능하도록 함
   });
   
+  $(".back-button").click(function () {
+    history.back();
+  });
 });
 
-let noticesStr = localStorage.getItem("notices");
-
-// localStorage 초기값 지정
-if (noticesStr === null) {
-  const listStr = JSON.stringify([]);
-  localStorage.setItem("notices", listStr);
-  noticesStr = listStr;
-}
-
-const noticesObj = JSON.parse(noticesStr);
 
 //템플릿 생성
 const template = (index, objValue) => {
@@ -37,13 +47,19 @@ const template = (index, objValue) => {
   `;
 };
 
-//템플릿 반영
-const tbody = document.querySelector("tbody");
+function fetchNotices() {
+  const tbody = document.querySelector("tbody");
+  tbody.innerHTML = "";
 
-for (let i =0; i<noticesObj.length; i++)
-{
-  tbody.innerHTML += template(i, noticesObj[i]);
-  noticesObj[i].refresh = false;
-  const refreshStr = JSON.stringify(noticesObj);
-  localStorage.setItem("notices", refreshStr);
+  onValue(noticesRef, (snapshot) => {
+    const data = snapshot.val();
+    if (data) {
+      const noticesArray = Object.values(data);
+      noticesArray.forEach((notice, index) => {
+        tbody.innerHTML += template(index, notice);
+      });
+    }
+  });
 }
+
+fetchNotices();
