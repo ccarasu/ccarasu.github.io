@@ -12,3 +12,59 @@ $(function() {
   });
   
 });
+
+const noticesStr = localStorage.getItem("notices");
+const noticesObj =  JSON.parse(noticesStr);
+
+const idx = location.search;  
+const index = idx.split("=")[1];  // 인덱스 숫자값만 가져오기
+const notice = noticesObj[index];
+
+const beforeUrl = document.referrer;
+
+//조회수
+if (!notice.refresh) {
+  notice.views++;
+  notice.refresh = true;
+  const viewCountStr = JSON.stringify(noticesObj);
+  localStorage.setItem("notices",viewCountStr);
+} else {
+  if (beforeUrl === " ") {
+    notice.views++;
+    const viewCountStr = JSON.stringify(noticesObj);
+    localStorage.setItem("notices", viewCountStr);
+  }
+}
+
+//데이터 출력
+const viewForm = document.querySelectorAll("#ViewForm > div");
+
+for (let i = 0; i<viewForm.length; i++)
+{
+  const id = viewForm[i].id;
+  viewForm[i].innerHTML += "" + notice[id];
+}
+
+const modifyBtn = document.querySelector("#modify");
+
+const modifyBtnHandler = (e) => {
+  location = "notice-modify.html" + idx;
+};
+
+modifyBtn.addEventListener("click", modifyBtnHandler);
+
+//삭제 버튼
+const deleteBtn = document.querySelector("#delete");
+
+const deleteBtnHandler = (e) => {
+  noticesObj.splice(index, 1);
+  for (let i=0; i < noticesObj.length; i++)
+  {
+    noticesObj[i].index = i;
+  }
+  const setNoticeStr = JSON.stringify(noticesObj);
+  localStorage.setItem("notices", setNoticeStr);
+  location.href = "notice.html";
+};
+
+deleteBtn.addEventListener("click", deleteBtnHandler);

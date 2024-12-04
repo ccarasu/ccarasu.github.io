@@ -15,29 +15,18 @@ $(function() {
 
 const writeForm = document.querySelector("#writeForm");
 
-const submitHandler = (e) => {
-  e.preventDefault();
-  const subject = e.target.subject.value;
-  const writer = e.target.writer.value;
-  const content = e.target.content.value;
-
-  console.log(subject);
-  console.log(writer);
-  console.log(content);
-}
-
-writeForm.addEventListener("submit", submitHandler);
-
-class notice {
+class Notice {
   constructor(indexNum, subjectstr, writeStr, contentStr) {
     this.index = indexNum;
     this.subject = subjectstr;
     this.writer = writeStr;
     this.content = contentStr;
     this.date = recordDate();
-    this.views = 0;
+    this.views = -1;
+    this.refresh = false;
   }
-
+  
+  //값 설정시 빈 값 체크
   set Subject(value) {
     if (value.length === 0) throw new Error("제목을 입력해주세요.");
     this.subject = value;
@@ -54,6 +43,7 @@ class notice {
   }
 }
 
+//현재 날짜 반환 함수
 const recordDate = () => {
   const date = new Date();
   const yyyy = date.getFullYear();
@@ -67,3 +57,32 @@ const recordDate = () => {
   
   return arr.join("-");
 }
+
+//글작성 버튼
+const submitHandler = (e) => {
+  e.preventDefault();
+  const subject = e.target.subject.value;
+  const writer = e.target.writer.value;
+  const content = e.target.content.value;
+
+  try {
+    //notices 가져오기
+    const noticesObj = JSON.parse(localStorage.getItem("notices"));
+
+    //객체 추가
+    const index = noticesObj.length;
+    const instance = new Notice(index, subject, writer, content);
+    noticesObj.push(instance);
+
+    //notices 저장
+    const noticesStr = JSON.stringify(noticesObj);
+    localStorage.setItem("notices", noticesStr);
+    location.href = "notice-view.html?index=" + index;
+  } catch (e) {
+    //예외 발생시 메시지 출력
+    alert(e.message);
+    console.error(e);
+  }
+};
+
+writeForm.addEventListener("submit", submitHandler);

@@ -12,3 +12,38 @@ $(function() {
   });
   
 });
+
+let noticesStr = localStorage.getItem("notices");
+
+// localStorage 초기값 지정
+if (noticesStr === null) {
+  const listStr = JSON.stringify([]);
+  localStorage.setItem("notices", listStr);
+  noticesStr = listStr;
+}
+
+const noticesObj = JSON.parse(noticesStr);
+
+//템플릿 생성
+const template = (index, objValue) => {
+  return `
+  <tr>
+    <td>${index + 1 }</td>
+    <td><a href="notice-view.html?index=${objValue.index}">${objValue.subject}</a></td>
+    <td>${objValue.writer}</td>
+    <td>${objValue.date}</td>
+    <td>${objValue.views}</td>
+  </tr>
+  `;
+};
+
+//템플릿 반영
+const tbody = document.querySelector("tbody");
+
+for (let i =0; i<noticesObj.length; i++)
+{
+  tbody.innerHTML += template(i, noticesObj[i]);
+  noticesObj[i].refresh = false;
+  const refreshStr = JSON.stringify(noticesObj);
+  localStorage.setItem("notices", refreshStr);
+}
