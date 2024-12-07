@@ -17,25 +17,6 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const noticesRef = ref(db, "notices");
 
-$(function() {
-  // 햄버거 메뉴 열기/닫기
-  $(".mobile_menu").click(function () {
-    $(".nav-menu").toggleClass("open"); // nav-menu에 'open' 클래스를 토글하여 메뉴 열고 닫기
-    $("body").css("overflow", $(".nav-menu").hasClass("open") ? "hidden" : "auto");
-  });
-
-  // X 버튼 클릭 시 메뉴 닫기
-  $("#closeMenu").click(function () {
-    $(".nav-menu").removeClass("open"); // nav-menu에서 'open' 클래스를 제거하여 메뉴 닫기
-    $("body").css("overflow", "auto"); // 메뉴가 닫히면 body의 overflow를 'auto'로 복원하여 스크롤이 가능하도록 함
-  });
-  
-  // 뒤로 가기 버튼
-  $(".back-button").click(function () {
-    history.back();
-  });
-});
-
 // 템플릿 생성
 const template = (index, objValue) => {
   return `
@@ -49,6 +30,7 @@ const template = (index, objValue) => {
   `;
 };
 
+// fetchNotices 함수
 function fetchNotices() {
   const tbody = document.querySelector("tbody");
   tbody.innerHTML = ""; // 기존 테이블 내용 초기화
@@ -68,4 +50,84 @@ function fetchNotices() {
   });
 }
 
-fetchNotices();  // 페이지 로드 시 notices 데이터를 가져옵니다.
+// 검색 기능 추가
+document.getElementById("search-btn").addEventListener("click", function() {
+  const searchTerm = document.getElementById("search").value.trim();
+  const searchType = document.querySelector('input[name="selector"]:checked').nextSibling.nodeValue.trim(); // 선택된 검색 항목
+  searchNotices(searchTerm, searchType);
+});
+
+// 엔터키로도 검색 가능하도록 수정
+document.getElementById("search").addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {  // 엔터키를 누르면
+    const searchTerm = document.getElementById("search").value.trim();
+    const searchType = document.querySelector('input[name="selector"]:checked').nextSibling.nodeValue.trim();
+    searchNotices(searchTerm, searchType);
+  }
+});
+
+// notices 데이터 검색 함수
+function searchNotices(searchTerm, searchType) {
+  const tbody = document.querySelector("tbody");
+  tbody.innerHTML = ""; // 기존 테이블 내용 초기화
+
+  onValue(noticesRef, (snapshot) => {
+    const data = snapshot.val();
+    if (data) {
+      const noticesArray = Object.values(data);
+      const filteredNotices = [];
+
+      for (const notice of noticesArray) {
+        // 검색 항목에 따라 필터링
+        if (searchType === "전체") {
+          // 제목 + 내용에서 모두 검색
+          if (notice.subject.includes(searchTerm) || notice.content.includes(searchTerm)) {
+            filteredNotices.push(notice);
+          }
+        } else if (searchType === "제목") {
+          if (notice.subject.includes(searchTerm)) {
+            filteredNotices.push(notice);
+          }
+        } else if (searchType === "내용") {
+          if (notice.content.includes(searchTerm)) {
+            filteredNotices.push(notice);
+          }
+        }
+      }
+
+      // 필터링된 공지사항 결과 테이블에 출력
+      if (filteredNotices.length > 0) {
+        filteredNotices.forEach((notice, index) => {
+          tbody.innerHTML += template(index, notice);
+        });
+      } else {
+        tbody.innerHTML = `<tr><td colspan="5">검색된 공지사항이 없습니다.</td></tr>`;
+      }
+
+    } else {
+      console.log("No data available");
+    }
+  }, (error) => {
+    console.log("Error fetching data:", error);
+  });
+}
+
+// 페이지 로드 시 notices 데이터를 가져옵니다.
+fetchNotices();
+
+// 모바일 메뉴 관련 기능
+$(function() {
+  $(".mobile_menu").click(function () {
+    $(".nav-menu").toggleClass("open");
+    $("body").css("overflow", $(".nav-menu").hasClass("open") ? "hidden" : "auto");
+  });
+
+  $("#closeMenu").click(function () {
+    $(".nav-menu").removeClass("open");
+    $("body").css("overflow", "auto");
+  });
+  
+  $(".back-button").click(function () {
+    history.back();
+  });
+});

@@ -139,14 +139,14 @@ main .form-container .signup-button {
     font-weight: bold;
     border: none;
     border-radius: 1.5rem;
-    background-color: #1D6E4E;
+    background-color: #199C6E;
     color: #fff;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 main .form-container .signup-button:hover {
-    background-color: #199C6E;
+    background-color: #1D6E4E;
 }
 
 /* 푸터 스타일 */
@@ -407,14 +407,14 @@ footer p {
         font-weight: bold;
         border: none;
         border-radius: 1.5rem;
-        background-color: #1D6E4E;
+        background-color: #199C6E;
         color: #fff;
         cursor: pointer;
         transition: background-color 0.3s ease;
     }
 
     main .form-container .signup-button:hover {
-        background-color: #199C6E;
+        background-color: #1D6E4E;
     }
 
     /* 푸터 스타일 */

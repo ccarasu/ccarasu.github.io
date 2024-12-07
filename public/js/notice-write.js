@@ -1,5 +1,4 @@
-// Firebase 초기화 (이미 초기화된 경우 생략 가능)
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js'; 
 import { getDatabase, ref, push, set, get } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js';
 
 const firebaseConfig = {
@@ -32,10 +31,10 @@ const recordDate = () => {
 
 // Notice 클래스 정의
 class Notice {
-  constructor(subjectstr, writeStr, contentStr) {
-    this.index = 0;  // index는 Firebase에서 자동 생성된 키로 대체됨
+  constructor(subjectstr, contentStr, index) {
+    this.index = index || 0;  // index 값은 파라미터로 받아옴
     this.subject = subjectstr || "";  // 빈 문자열 기본값 설정
-    this.writer = writeStr || "";  // 빈 문자열 기본값 설정
+    this.writer = "admin";  // writer는 항상 "admin"으로 고정
     this.content = contentStr || "";  // 빈 문자열 기본값 설정
     this.date = recordDate();
     this.views = 0;  // 기본값 설정
@@ -48,23 +47,17 @@ class Notice {
     this.subject = value;
   }
 
-  set Writer(value) {
-    if (value.length === 0) throw new Error("작성자를 입력해주세요.");
-    this.writer = value;
-  }
-
   set Content(value) {
     if (value.length === 0) throw new Error("내용을 입력해주세요.");
     this.content = value;
   }
 }
 
-// 글작성 버튼
+//글 작성 버튼
 const submitHandler = async (e) => {
   e.preventDefault();
 
   const subject = e.target.subject.value;
-  const writer = e.target.writer.value;
   const content = e.target.content.value;
 
   try {
@@ -73,9 +66,16 @@ const submitHandler = async (e) => {
     const snapshot = await get(noticesRef);
     const noticesObj = snapshot.exists() ? snapshot.val() : [];
 
-    // 새로운 공지사항 객체 생성
-    const instance = new Notice(subject, writer, content);
+    // 기존 공지사항들의 index 값 중 가장 큰 값 찾기
+    let newIndex = 0;  // 기본값 0
+    if (noticesObj) {
+      const indexes = Object.values(noticesObj).map(notice => notice.index);
+      newIndex = indexes.length > 0 ? Math.max(...indexes) + 1 : 0;  // 가장 큰 index 값에 1을 더한 값 사용
+    }
 
+    // 새로운 공지사항 객체 생성
+    const instance = new Notice(subject, content, newIndex);
+    
     // Firebase에 새 공지사항 추가
     const newNoticeRef = push(noticesRef); // 고유 키로 데이터 추가
     await set(newNoticeRef, instance);

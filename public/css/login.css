@@ -134,23 +134,23 @@ main .form-container button {
     font-size: 1rem;
     border: none;
     border-radius: 1.5rem; /* 둥근 버튼 */
-    background-color: #1D6E4E; /* 초록색 버튼 */
+    background-color: #199C6E; /* 초록색 버튼 */
     color: #fff; /* 텍스트 색상 */
     cursor: pointer;
     margin-bottom: 0.625rem;
 }
 
 main .form-container button:hover {
-    background-color: #199C6E; /* 버튼 호버 색상 */
+    background-color: #1D6E4E; /* 버튼 호버 색상 */
 }
 
 /* 회원가입 버튼 스타일 */
 main .form-container .signup-button {
-    background-color: #1D6E4E; /* 초록색 */
+    background-color: #199C6E; /* 초록색 */
 }
 
 main .form-container .signup-button:hover {
-    background-color: #199C6E; /* 버튼 호버 색상 */
+    background-color: #1D6E4E; /* 버튼 호버 색상 */
 }
 
 
@@ -375,29 +375,29 @@ footer p {
         color: #000; /* 입력 필드 안의 텍스트 색상 (검정색) */
     }
     
-    main .form-container button {
+    .form-container button {
         width: 100%;
         padding: 0.75rem;
         font-size: 1rem;
         border: none;
         border-radius: 1.5rem; /* 둥근 버튼 */
-        background-color: #1D6E4E; /* 초록색 버튼 */
+        background-color: #199C6E; /* 초록색 버튼 */
         color: #fff; /* 텍스트 색상 */
         cursor: pointer;
         margin-bottom: 0.625rem;
     }
     
-    main .form-container button:hover {
-        background-color: #199C6E; /* 버튼 호버 색상 */
+    .form-container button:hover {
+        background-color: #1D6E4E; /* 버튼 호버 색상 */
     }
     
     /* 회원가입 버튼 스타일 */
-    main .form-container .signup-button {
-        background-color: #1D6E4E; /* 초록색 */
+    .form-container .signup-button {
+        background-color: #199C6E; /* 초록색 */
     }
     
-    main .form-container .signup-button:hover {
-        background-color: #199C6E; /* 버튼 호버 색상 */
+    .form-container .signup-button:hover {
+        background-color: #1D6E4E; /* 버튼 호버 색상 */
     }
 
 

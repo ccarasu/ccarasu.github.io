@@ -59,14 +59,25 @@
     </header>
     <main>
         <h2>공지사항 쓰기</h2>
-
-        <form id="writeForm">
-          <div>제목 : <input type="text" name="subject"></div>
-          <div>작성자 : <input type="text" name="writer"></div>
-          <div>내용 : <textarea name="content"></textarea></div>
-          <input type="submit" value="글작성">
-        </form>
-        <button><a href="notice.html">뒤로가기</a></button>
+        <div id="form-container">
+    
+            <form id="writeForm">
+              <div>
+                <label for="subject">제목</label>
+                <input type="text" name="subject" id="subject" autocomplete="off">
+              </div>
+              <div>
+                <label for="writer">작성자</label>
+                <input type="text" name="writer" value="admin" id="writer" readonly>
+              </div>
+              <div>
+                <label for="content">내용</label>
+                <textarea name="content" id="content"></textarea>
+              </div>
+              <input type="submit" value="글 작성">
+            </form>
+            <button><a href="notice.html">뒤로가기</a></button>
+        </div>
     </main>
     <footer>
         <div class="share_sns">

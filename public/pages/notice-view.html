@@ -58,16 +58,19 @@
       <div class="login"><a href="login.html"><img src="../images/login.png" alt="로그인 이미지"></a></div>
     </header>
     <main>
-        <h2>작성한 게시글</h2>
-
-        <form id="ViewForm">
-          <div id="subject">제목 : </div>
-          <div id="writer">작성자 : </div>
-          <div id="date">작성일 : </div>
-          <div id="content">내용 : </div>
-        </form>
-        <button id="modify">수정</button>
-        <button><a href="notice.html">뒤로가기</a></button>
+        <h2>공지사항</h2>
+        <div id="form-container">
+            <form id="ViewForm">
+              <div id="subject"></div>
+              <div id="info">
+                <div id="writer">작성자 : </div>
+                <div id="date">작성일 : </div>
+              </div>
+              <div id="content"></div>
+            </form>
+            <button id="modify">수정</button>
+            <button><a href="notice.html">뒤로가기</a></button>
+        </div>
     </main>
     <footer>
         <div class="share_sns">
