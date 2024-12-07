@@ -222,26 +222,32 @@ footer p {
     font-family: 'jua', sans-serif;
     color: #fff;
   }
+  
   /* 페이지 전체의 배경과 크기 설정 */
   body {
     display: flex;
+    flex-direction: column;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     background-color: #E4D7B9;
   }
-   /* 헤더 부분 스타일 */
-   header {
+  
+  
+  /* 헤더 부분 스타일 */
+  header {
     width: 100%;
-    height: 100px;
+    height: 6.25rem;
     background-color: #199C6E;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
     gap: 5rem;
   }
 
   .logo {
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: bold;
     order: 0;
   }
@@ -252,24 +258,24 @@ footer p {
 
   /* 로그인 이미지 스타일 */
   .login img {
-    width: 24px;
-    height: 24px;
+    width: 1.5rem;
+    height: 1.5rem;
   }
 
   /* 모바일 메뉴 바 스타일 */
   .mobile_menu {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    padding: 5px;
-    border-radius: 5px;
+    gap: 0.3125rem;
+    padding: 0.3125rem;
+    border-radius: 0.3125rem;
     transition: background-color 0.3s;
   }
 
   .bar {
-    width: 25px;
-    height: 3px;
-    border-radius: 5px;
+    width: 1.5625rem;
+    height: 0.1875rem;
+    border-radius: 0.3125rem;
     background-color: #fff;
   }
 
@@ -285,11 +291,10 @@ footer p {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    gap: 45px;
-    padding: 15px;
+    gap: 2.8125rem;
+    padding: 0.9375rem;
     background-color: #199C6E;
   }
-
   .nav-menu.open {
     display: flex;
   }
@@ -297,34 +302,34 @@ footer p {
   .nav-menu a {
     display: block;
     width: 100%;
-    padding: 10px 15px;
-    font-size: 24px;
+    padding: 0.625rem 0.9375rem;
+    font-size: 1.5rem;
     text-decoration: none;
     color: #fff;
-    border: 1px solid #fff;
-    border-radius: 5px;
-    margin-bottom: 5px;
+    border: 0.0625rem solid #fff;
+    border-radius: 0.3125rem;
+    margin-bottom: 0.3125rem;
     transition: background-color 0.3s;
   }
 
   .nav-menu a#menu-logo {
     display: block;
-    font-size: 40px;
+    font-size: 2.5rem;
     text-align: center;
     width: 100%;
-    padding: 10px 15px;
+    padding: 0.625rem 0.9375rem;
     border: none;
   }
 
   .close-menu {
     position: fixed;
-    right: 20px;
-    top: 15px;
+    right: 1.25rem;
+    top: 0.9375rem;
     background-color: transparent;
     border: none;
-    font-size: 40px;
+    font-size: 2.5rem;
     color: #fff;
-    padding: 10px;
+    padding: 0.625rem;
     z-index: 10000;
   }
 

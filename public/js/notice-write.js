@@ -1,5 +1,6 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js'; 
 import { getDatabase, ref, push, set, get } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js';
+import { getAuth,onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDwZIP7CNex9zvLckwM5xCf0iafsYfAQcE",
@@ -14,6 +15,19 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
+const auth = getAuth(app);
+
+const loginLink = $("#login-link");
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // 로그인한 경우: 마이페이지로 이동
+    loginLink.attr("href", "pages/mypage.html"); // 마이페이지 링크로 변경
+  } else {
+  // 로그인하지 않은 경우: 로그인 페이지로 이동
+  loginLink.attr("href", "pages/login.html"); // 로그인 페이지 링크로 변경
+  } 
+});
 
 // 현재 날짜 반환 함수
 const recordDate = () => {

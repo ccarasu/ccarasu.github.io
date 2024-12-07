@@ -1,6 +1,7 @@
 // Firebase 초기화
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
 import { getDatabase, ref, onValue } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js';
+import { getAuth,onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDwZIP7CNex9zvLckwM5xCf0iafsYfAQcE",
@@ -16,6 +17,19 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const noticesRef = ref(db, "notices");
+const auth = getAuth(app);
+
+const loginLink = $("#login-link");
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // 로그인한 경우: 마이페이지로 이동
+      loginLink.attr("href", "pages/mypage.html"); // 마이페이지 링크로 변경
+    } else {
+    // 로그인하지 않은 경우: 로그인 페이지로 이동
+    loginLink.attr("href", "pages/login.html"); // 로그인 페이지 링크로 변경
+  }
+});
 
 // 템플릿 생성
 const template = (index, objValue) => {

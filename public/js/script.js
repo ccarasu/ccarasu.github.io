@@ -1,3 +1,21 @@
+// Firebase 초기화
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
+import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js';
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDwZIP7CNex9zvLckwM5xCf0iafsYfAQcE",
+    authDomain: "basicweb-6group.firebaseapp.com",
+    databaseURL: "https://basicweb-6group-default-rtdb.firebaseio.com",
+    projectId: "basicweb-6group",
+    storageBucket: "basicweb-6group.appspot.com",
+    messagingSenderId: "454084926465",
+    appId: "1:454084926465:web:5c6c52bbe7c837632cf400",
+    measurementId: "G-FHTJY0MMFG"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
 $(function () {
   let slideIndex = 1; // 슬라이드 인덱스 초기화
 
@@ -8,6 +26,18 @@ $(function () {
   $(".win_num_menu > li:first-child .slide-container").show();
   $(".win_num_menu > li:first-child .slide-container .slide:first").show();
 
+  const loginLink = $("#login-link");
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+        // 로그인한 경우: 마이페이지로 이동
+        loginLink.attr("href", "pages/mypage.html"); // 마이페이지 링크로 변경
+      } else {
+        // 로그인하지 않은 경우: 로그인 페이지로 이동
+        loginLink.attr("href", "pages/login.html"); // 로그인 페이지 링크로 변경
+      }
+  });
+  
   $(".tabmenu > li > a").click(function (event) {
     event.preventDefault(); // 기본 링크 클릭 동작을 방지
 
@@ -171,6 +201,17 @@ $(function () {
                   const number = data.bnusNo;
                   element.innerText = number;
                   addColorClass(number, element); // 색상 클래스 추가
+              });
+              
+              // 실수령액 계산 및 업데이트
+              const firstWinAmount = Math.floor(data.firstWinamnt * 0.67).toLocaleString();
+              document.querySelectorAll(".amount").forEach(element => {
+                element.innerText =  `실 수령액: ${firstWinAmount} 원`;
+              }); 
+
+              // 당첨 복권 수 업데이트
+              document.querySelectorAll(".winner-count").forEach(element => {
+                element.innerText = `당첨 복권 수: ${data.firstPrzwnerCo}`;
               });
           }
       

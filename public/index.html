@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/style.css"> <!-- 외부 CSS 파일 링크 -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <script src="js/jquery-3.7.1.js"></script> <!-- jQuery 라이브러리 -->
-    <script src="js/script.js" defer></script> <!-- 외부 JavaScript 파일 링크 (defer는 HTML이 로드된 후 스크립트 실행) -->
+    <script type="module" src="js/script.js" defer></script> <!-- 외부 JavaScript 파일 링크 (defer는 HTML이 로드된 후 스크립트 실행) -->
 </head>
 <body>
     <!-- 사이트 상단 부분 -->
@@ -38,7 +38,7 @@
         <!-- 로고 부분 -->
         <div class="logo"><a href="index.html">로 또 복권</a></div>
         <!-- 로그인 이미지 부분 -->
-        <div class="login"><a href="pages/login.html"><img src="images/login.png" alt="로그인 이미지"></a></div>
+        <div class="login"><a href="pages/login.html" id="login-link"><img src="images/login.png" alt="로그인 이미지"></a></div>
     </header>
     <main>
         <section id="sct1">
@@ -66,6 +66,8 @@
                                     <span class="plus">&#43;</span>
                                     <span class="ball bonus"></span>
                                 </div>
+                                <div class="amount"></div>
+                                <div class="winner-count"></div>
                             </div>
                             <div class="slide">
                                 <div class="round"></div>
@@ -79,6 +81,8 @@
                                     <span class="plus">&#43;</span>
                                     <span class="ball bonus"></span>
                                 </div>
+                                <div class="amount"></div>
+                                <div class="winner-count"></div>
                             </div>
                             <div class="slide">
                                 <div class="round"></div>
@@ -92,6 +96,8 @@
                                     <span class="plus">&#43;</span>
                                     <span class="ball bonus"></span>
                                 </div>
+                                <div class="amount"></div>
+                                <div class="winner-count"></div>
                             </div>
                             <div class="slide">
                                 <div class="round"></div>
@@ -105,6 +111,8 @@
                                     <span class="plus">&#43;</span>
                                     <span class="ball bonus"></span>
                                 </div>
+                                <div class="amount"></div>
+                                <div class="winner-count"></div>
                             </div>
                             <div class="slide">
                                 <div class="round"></div>
@@ -118,6 +126,8 @@
                                     <span class="plus">&#43;</span>
                                     <span class="ball bonus"></span>
                                 </div>
+                                <div class="amount"></div>
+                                <div class="winner-count"></div>
                             </div>
     
                             <!-- Next and previous buttons -->
@@ -140,6 +150,8 @@
                                     <span class="plus">&#43;</span>
                                     <span class="ball bonus"></span>
                                 </div>
+                                <div class="amount"></div>
+                                <div class="winner-count"></div>
                             </div>
                             <div class="slide">
                                 <div class="round"></div>
@@ -153,6 +165,8 @@
                                     <span class="plus">&#43;</span>
                                     <span class="ball bonus"></span>
                                 </div>
+                                <div class="amount"></div>
+                                <div class="winner-count"></div>
                             </div>
                             <div class="slide">
                                 <div class="round"></div>
@@ -166,6 +180,8 @@
                                     <span class="plus">&#43;</span>
                                     <span class="ball bonus"></span>
                                 </div>
+                                <div class="amount"></div>
+                                <div class="winner-count"></div>
                             </div>
                             <div class="slide">
                                 <div class="round"></div>
@@ -179,6 +195,8 @@
                                     <span class="plus">&#43;</span>
                                     <span class="ball bonus"></span>
                                 </div>
+                                <div class="amount"></div>
+                                <div class="winner-count"></div>
                             </div>
                             <div class="slide">
                                 <div class="ball-container">
@@ -191,6 +209,8 @@
                                     <span class="plus">&#43;</span>
                                     <span class="ball bonus"></span>
                                 </div>
+                                <div class="amount"></div>
+                                <div class="winner-count"></div>
                             </div>
     
                             <!-- Next and previous buttons -->
