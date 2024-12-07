@@ -8,11 +8,20 @@ $(function () {
   $(".win_num_menu > li:first-child .slide-container").show();
   $(".win_num_menu > li:first-child .slide-container .slide:first").show();
 
-  // 탭 메뉴 클릭 시 해당 탭에 'active' 클래스 추가하고 다른 탭의 'active' 클래스 제거
   $(".tabmenu > li > a").click(function (event) {
-      event.preventDefault(); // 기본 링크 클릭 동작(페이지 이동 등)을 방지
-      $(this).parent().addClass("active") // 클릭한 항목의 부모(li)에 'active' 클래스를 추가
-             .siblings().removeClass("active"); // 형제 요소들의 'active' 클래스는 제거
+    event.preventDefault(); // 기본 링크 클릭 동작을 방지
+
+    // 'active' 클래스 관리
+    $(this).parent().addClass("active") // 클릭한 항목의 부모(li)에 'active' 클래스 추가
+           .siblings().removeClass("active"); // 형제 요소의 'active' 클래스 제거
+
+    // #more의 a 태그 href 속성 변경
+    const tabIndex = $(this).parent().index(); // 클릭한 li 요소의 인덱스를 가져옴
+    if (tabIndex === 0) { // 공지사항 탭
+        $("#more > a").attr("href", "pages/notice.html");
+    } else if (tabIndex === 1) { // 언론보도 탭
+        $("#more > a").attr("href", "pages/news.html");
+    }
   });
 
   // 당첨 번호 메뉴 클릭 시 해당 항목에 'checked' 클래스 추가하고 다른 항목의 'checked' 클래스 제거

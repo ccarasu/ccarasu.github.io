@@ -11,4 +11,7 @@ $(function() {
     $("body").css("overflow", "auto"); // 메뉴가 닫히면 body의 overflow를 'auto'로 복원하여 스크롤이 가능하도록 함
   });
   
+  $(".back-button").click(function () {
+    history.back();
+  });
 });

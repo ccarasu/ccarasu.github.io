@@ -1,6 +1,6 @@
-// Firebase 초기화 (이미 초기화된 경우 생략 가능)
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
-import { getDatabase, ref, remove, set, get} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js';
+import { getDatabase, ref, get, runTransaction } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js';
+
 const firebaseConfig = {
   apiKey: "AIzaSyDwZIP7CNex9zvLckwM5xCf0iafsYfAQcE",
   authDomain: "basicweb-6group.firebaseapp.com",
@@ -15,106 +15,66 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-$(function() {
-  // 햄버거 메뉴 클릭 시 메뉴 열기/닫기
-  $(".mobile_menu").click(function () {
-    $(".nav-menu").toggleClass("open"); // nav-menu에 'open' 클래스를 토글하여 메뉴 열고 닫기
-    $("body").css("overflow", $(".nav-menu").hasClass("open") ? "hidden" : "auto");
-  });
-
-  // X 버튼 클릭 시 메뉴 닫기
-  $("#closeMenu").click(function () {
-    $(".nav-menu").removeClass("open"); // nav-menu에서 'open' 클래스를 제거하여 메뉴 닫기
-    $("body").css("overflow", "auto"); // 메뉴가 닫히면 body의 overflow를 'auto'로 복원하여 스크롤이 가능하도록 함
-  });
-});
-
+// URL에서 index 값 추출
 const idx = location.search;
-const index = idx.split("=")[1]; // 인덱스 숫자값만 가져오기
+const index = idx.split("=")[1];
 
-// Firebase에서 notices 데이터 가져오기
+// notices 데이터 가져오기
 const noticesRef = ref(database, 'notices');
 get(noticesRef).then((snapshot) => {
   if (snapshot.exists()) {
     const noticesObj = snapshot.val();
-    
-    // 원하는 notice를 찾기 위한 변수
     let notice = null;
     let noticeKey = null;
 
-    // noticesObj를 순회하면서 index와 일치하는 항목을 찾음
+    // index에 해당하는 데이터를 찾기
     for (const key in noticesObj) {
       if (noticesObj[key].index === parseInt(index)) {
         notice = noticesObj[key];
-        noticeKey = key; // 해당 항목의 고유 key 저장
-        break; // 원하는 데이터를 찾았으면 반복문 종료
+        noticeKey = key; // 고유 key 저장
+        break;
       }
     }
 
-    // notice가 null이 아니면 해당 데이터를 사용
-    if (notice) {
-      const beforeUrl = document.referrer;
+    if (notice && noticeKey) {
+      // 로컬 스토리지에서 이미 조회한 공지인지 확인
+      const viewedNotices = JSON.parse(localStorage.getItem('viewedNotices')) || [];
 
-      // 조회수 처리
-      if (!notice.refresh) {
-        notice.views++;
-        notice.refresh = true;
-        set(ref(database, `notices/${noticeKey}`), notice); // 해당 항목 업데이트
-      } else {
-        if (beforeUrl === " ") {
-          notice.views++;
-          set(ref(database, `notices/${noticeKey}`), notice); // 해당 항목 업데이트
-        }
+      // 이미 본 공지사항인지 체크
+      if (!viewedNotices.includes(noticeKey)) {
+        // 조회수 업데이트
+        const noticeRef = ref(database, `notices/${noticeKey}`);
+        runTransaction(noticeRef, (currentData) => {
+          if (currentData) {
+            currentData.views = (currentData.views || 0) + 1;
+            currentData.refresh = true; // 한 번 조회되면 refresh 값을 true로 설정
+          }
+          return currentData;
+        }).then(() => {
+          console.log("조회수 업데이트 성공");
+        }).catch((error) => {
+          console.error("조회수 업데이트 실패:", error);
+        });
+
+        // 조회한 공지 목록에 추가
+        viewedNotices.push(noticeKey);
+        localStorage.setItem('viewedNotices', JSON.stringify(viewedNotices));
       }
 
       // 데이터 출력
       const viewForm = document.querySelectorAll("#ViewForm > div");
-
       for (let i = 0; i < viewForm.length; i++) {
         const id = viewForm[i].id;
         viewForm[i].innerHTML += "" + notice[id];
       }
 
-      const modifyBtn = document.querySelector("#modify");
-
-      const modifyBtnHandler = (e) => {
-        location = "notice-modify.html" + idx;
-      };
-
-      modifyBtn.addEventListener("click", modifyBtnHandler);
-
-      // 삭제 버튼
-      const deleteBtn = document.querySelector("#delete");
-
-      const deleteBtnHandler = (e) => {
-        // notices에서 해당 항목 삭제
-        remove(ref(database, `notices/${noticeKey}`)).then(() => {
-          // 삭제 후 인덱스를 재조정
-          get(noticesRef).then((snapshot) => {
-            if (snapshot.exists()) {
-              const updatedNotices = snapshot.val();
-              let i = 0;
-              for (const key in updatedNotices) {
-                updatedNotices[key].index = i++;
-              }
-              // notices 재저장
-              set(noticesRef, updatedNotices).then(() => {
-                location.href = "notice.html";
-              });
-            }
-          });
-        });
-      };
-
-      deleteBtn.addEventListener("click", deleteBtnHandler);
-
     } else {
-      console.log("Notice not found for index:", index);
+      console.log("해당 index에 대한 공지를 찾을 수 없습니다:", index);
     }
 
   } else {
-    console.log("No data available");
+    console.log("공지 데이터가 존재하지 않습니다.");
   }
 }).catch((error) => {
-  console.error(error);
+  console.error("데이터 로드 실패:", error);
 });
