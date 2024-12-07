@@ -1,4 +1,4 @@
-// Firebase 초기화 (변경 없음)
+// Firebase 초기화 
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
 import { getDatabase, ref, onValue, query, orderByChild, limitToLast, startAfter, endBefore, push } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js';
 import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js';
