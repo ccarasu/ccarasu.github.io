@@ -1,0 +1,420 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: 'jua', sans-serif;
+  color: #fff;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #E4D7B9;
+}
+
+header {
+  width: 100%;
+  height: 6.25rem;
+  background-color: #199C6E;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 5rem;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  order: -1;
+}
+.logo a {
+  text-decoration: none;
+}
+.login img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.mobile_menu {
+  display: none;
+}
+
+#menu-logo {
+  display: none;
+}
+#closeMenu {
+  display: none;
+}
+
+.nav-menu a{
+  text-decoration: none;
+  padding-left: 0.5rem;
+}
+main {
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#mypage-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 35rem;
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+#userInfo {
+  background-color: #1D6E4E;
+  text-align: center;
+  line-height: 3rem;
+  width: 15rem;
+  height: 3rem;
+  font-size: 1.8rem;
+  border-radius: 50%;
+}
+#img {
+  padding-top: 1rem;
+}
+#img img {
+  width: 5rem;
+  height: 5rem;
+}
+
+.userInfo-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  gap: 0.5rem;
+  width: 25rem;
+}
+
+.userInfo-container div {
+  background-color: #1D6E4E;
+  position: relative;
+  height: 2.5rem;
+  border-radius: 0.25rem;
+}
+
+#userId span {
+  float: left;
+  margin-left: 0.5rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+  background-color: #199C6E;
+  width: 3rem;
+  height: 2rem;
+  line-height: 2rem;
+  border-radius: 0.25rem;
+}
+
+#userEmail span {
+  float: left;
+  margin-left: 0.5rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+  background-color: #199C6E;
+  width: 3rem;
+  height: 2rem;
+  line-height: 2rem;
+  border-radius: 0.25rem;
+}
+#editInfo {
+  font-size: 1.2rem;
+  line-height: 2.5rem;
+}
+#resultList {
+  font-size: 1.2rem;
+  line-height: 2.5rem;
+}
+#question {
+  font-size: 1.2rem;
+  line-height: 2.5rem;
+}
+#logout button{
+  width: 100%;
+  height: 100%;
+  line-height: 2.5rem;
+  font-size: 1.2rem;
+  border: none;
+  background: none;
+}
+
+/* 푸터 스타일 */
+footer {
+  position: relative;
+  width: 100%;
+  height: 15rem;
+  bottom: 0;
+  background-color: #199C6E;
+}
+
+/* SNS 공유 아이콘 스타일 */
+.share_sns ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1.25rem;
+  padding-top: 1.5rem;
+}
+
+.share_sns li input {
+    width: 2rem;
+    height: 2rem;
+}
+
+footer p {
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+/* 모바일 화면을 위한 CSS */
+@media (max-width: 767px) {
+  /* 기본 스타일 리셋 */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: 'jua', sans-serif;
+    color: #fff;
+  }
+  
+  /* 페이지 전체의 배경과 크기 설정 */
+  body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100%;
+    background-color: #E4D7B9;
+  }
+  
+  
+  /* 헤더 부분 스타일 */
+  header {
+    width: 100%;
+    height: 6.25rem;
+    background-color: #199C6E;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    gap: 5rem;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    order: 0;
+  }
+
+  .logo a {
+    text-decoration: none;
+  }
+
+  /* 로그인 이미지 스타일 */
+  .login img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  /* 모바일 메뉴 바 스타일 */
+  .mobile_menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3125rem;
+    padding: 0.3125rem;
+    border-radius: 0.3125rem;
+    transition: background-color 0.3s;
+  }
+
+  .bar {
+    width: 1.5625rem;
+    height: 0.1875rem;
+    border-radius: 0.3125rem;
+    background-color: #fff;
+  }
+
+  /* 네비게이션 메뉴 스타일 */
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2.8125rem;
+    padding: 0.9375rem;
+    background-color: #199C6E;
+  }
+  .nav-menu.open {
+    display: flex;
+  }
+
+  .nav-menu a {
+    display: block;
+    width: 100%;
+    padding: 0.625rem 0.9375rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #fff;
+    border: 0.0625rem solid #fff;
+    border-radius: 0.3125rem;
+    margin-bottom: 0.3125rem;
+    transition: background-color 0.3s;
+  }
+
+  .nav-menu a#menu-logo {
+    display: block;
+    font-size: 2.5rem;
+    text-align: center;
+    width: 100%;
+    padding: 0.625rem 0.9375rem;
+    border: none;
+  }
+
+  .close-menu {
+    position: fixed;
+    right: 1.25rem;
+    top: 0.9375rem;
+    background-color: transparent;
+    border: none;
+    font-size: 2.5rem;
+    color: #fff;
+    padding: 0.625rem;
+    z-index: 10000;
+  }
+
+  #closeMenu {
+    display: block;
+  }
+
+  main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #mypage-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 35rem;
+    padding-top: 1.5rem;
+    text-align: center;
+  }
+  
+  #userInfo {
+    background-color: #1D6E4E;
+    text-align: center;
+    line-height: 2.5rem;
+    width: 13rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+    border-radius: 50%;
+  }
+  #img {
+    padding-top: 1rem;
+  }
+  #img img {
+    width: 4rem;
+    height: 4rem;
+  }
+  
+  .userInfo-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+    gap: 0.5rem;
+    width: 20rem;
+  }
+  
+  .userInfo-container div {
+    background-color: #1D6E4E;
+    position: relative;
+    height: 2.5rem;
+    border-radius: 0.25rem;
+  }
+  
+  #userId span {
+    float: left;
+    margin-left: 0.5rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    background-color: #199C6E;
+    width: 3rem;
+    height: 2rem;
+    line-height: 2rem;
+    border-radius: 0.25rem;
+  }
+  
+  #userEmail span {
+    float: left;
+    margin-left: 0.5rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    background-color: #199C6E;
+    width: 3rem;
+    height: 2rem;
+    line-height: 2rem;
+    border-radius: 0.25rem;
+  }
+  #editInfo {
+    font-size: 1.2rem;
+    line-height: 2.5rem;
+  }
+  #resultList {
+    font-size: 1.2rem;
+    line-height: 2.5rem;
+  }
+  #question {
+    font-size: 1.2rem;
+    line-height: 2.5rem;
+  }
+  #logout button{
+    width: 100%;
+    height: 100%;
+    line-height: 2.5rem;
+    font-size: 1.2rem;
+    border: none;
+    background: none;
+  }
+   /* 푸터 스타일 */
+  footer {
+    position: relative;
+    width: 100%;
+    height: 15rem;
+    bottom: 0;
+    background-color: #199C6E;
+  }
+
+  /* SNS 공유 아이콘 스타일 */
+  .share_sns ul {
+    display: flex;
+    flex-direction: row;
+    gap: 1.25rem;
+    padding-top: 1.5rem;
+    padding-left: 1rem;
+  }
+
+  .share_sns li input {
+      width: 2rem;
+      height: 2rem;
+  }
+}

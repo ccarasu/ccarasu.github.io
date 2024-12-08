@@ -11,9 +11,9 @@
         @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Noto+Sans+KR:wght@100..900&display=swap');
     </style>
     <!-- 구글 폰트에서 Jua, Noto Sans KR, Black Han Sans 폰트를 가져옴 -->
-    <link rel="stylesheet" href="css/mypage.css"> <!-- 외부 CSS 파일 링크 -->
+    <link rel="stylesheet" href="../css/mypage.css"> <!-- 외부 CSS 파일 링크 -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <script src="js/jquery-3.7.1.js"></script> <!-- jQuery 라이브러리 -->
+    <script src="../js/jquery-3.7.1.js"></script> <!-- jQuery 라이브러리 -->
     <script type="module" src="../js/mypage.js"></script> <!-- 외부 JavaScript 파일 링크 (defer는 HTML이 로드된 후 스크립트 실행) -->
     <!-- Firebase 모듈을 'type="module"'로 가져오기 -->
     <script type="module">
@@ -62,6 +62,37 @@
         <!-- 로그인 이미지 부분 -->
         <div class="login"><a href="login.html" id="login-link"><img src="../images/login.png" alt="로그인 이미지"></a></div>
     </header>
-    
+    <main>
+        <div id="mypage-container">
+            <div id="userInfo">회원정보</div>
+            <div id="img"><img src="../images/blacklogin.png" alt="회원이미지"></div>
+            <div class="userInfo-container">
+                <div id="userId">
+                    <span>id</span>
+                </div>
+                <div id="userEmail">
+                    <span>email</span>
+                </div>
+                <div id="editInfo">회원정보 수정</div>
+                <div id="resultList">누적결과</div>
+                <div id="question">문의내역</div>
+                <div id="logout"><button>로그아웃</button></div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <!-- 하단 푸터 -->
+        <div class="share_sns">
+            <ul>
+                <li><input type="image" src="../images/kakaologo.png" alt="카카오톡"></li> <!-- 카카오톡 공유 아이콘 -->
+                <li><input type="image" src="../images/messengerlogo.png" alt="메신저"></li> <!-- 메신저 공유 아이콘 -->
+                <li><input type="image" src="../images/instalogo.png" alt="인스타"></li> <!-- 인스타그램 공유 아이콘 -->
+                <li><input type="image" src="../images/ticktoklogo.png" alt="틱톡"></li> <!-- 틱톡 공유 아이콘 -->
+                <li><input type="image" src="../images/morebutton.png" alt="더보기"></li>
+            </ul>
+        </div>
+        <!-- SNS 공유 기능 (각각의 SNS로 콘텐츠를 공유할 수 있는 아이콘들) -->
+        <p><small>Copyright©2024 로 또 복권. All Rights Reserved.</small></p>
+    </footer>
 </body>
 </html>
