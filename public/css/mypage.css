@@ -104,29 +104,10 @@ main {
   border-radius: 0.25rem;
 }
 
-#userId span {
-  float: left;
-  margin-left: 0.5rem;
-  margin-top: 0.2rem;
-  margin-bottom: 0.2rem;
-  background-color: #199C6E;
-  width: 3rem;
-  height: 2rem;
-  line-height: 2rem;
-  border-radius: 0.25rem;
+#userEmail {
+  line-height: 2.5rem;
 }
 
-#userEmail span {
-  float: left;
-  margin-left: 0.5rem;
-  margin-top: 0.2rem;
-  margin-bottom: 0.2rem;
-  background-color: #199C6E;
-  width: 3rem;
-  height: 2rem;
-  line-height: 2rem;
-  border-radius: 0.25rem;
-}
 #editInfo {
   font-size: 1.2rem;
   line-height: 2.5rem;
@@ -352,29 +333,7 @@ footer p {
     border-radius: 0.25rem;
   }
   
-  #userId span {
-    float: left;
-    margin-left: 0.5rem;
-    margin-top: 0.2rem;
-    margin-bottom: 0.2rem;
-    background-color: #199C6E;
-    width: 3rem;
-    height: 2rem;
-    line-height: 2rem;
-    border-radius: 0.25rem;
-  }
   
-  #userEmail span {
-    float: left;
-    margin-left: 0.5rem;
-    margin-top: 0.2rem;
-    margin-bottom: 0.2rem;
-    background-color: #199C6E;
-    width: 3rem;
-    height: 2rem;
-    line-height: 2rem;
-    border-radius: 0.25rem;
-  }
   #editInfo {
     font-size: 1.2rem;
     line-height: 2.5rem;

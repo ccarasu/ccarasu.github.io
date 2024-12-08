@@ -21,6 +21,8 @@ onAuthStateChanged(auth, (user) => {
   if (user) {
     // 로그인한 경우: 마이페이지로 이동
     loginLink.attr("href", "pages/mypage.html"); // 마이페이지 링크로 변경
+    
+    $("#Email").text(user.email);
   } else {
   // 로그인하지 않은 경우: 로그인 페이지로 이동
   loginLink.attr("href", "pages/login.html"); // 로그인 페이지 링크로 변경
@@ -47,6 +49,7 @@ $(function() {
     .then(() => {
       console.log("User logged out successfully!");
       // 로그아웃 후 리디렉션
+      alert("로그아웃되었습니다.");
       window.location.href = "login.html";
     })
     .catch((error) => {
