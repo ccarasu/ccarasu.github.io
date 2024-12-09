@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js'; 
-import { getDatabase, ref, push, set, get } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js';
+import { getDatabase, ref, set, get } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js';
 import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js';
 
 const firebaseConfig = {
@@ -90,21 +90,21 @@ const submitHandler = async (e) => {
     return;
   }
 
-  // Firebase에서 현재 공지사항 목록 가져오기
-  const subject = e.target.subject.value;
-  const content = e.target.content.value;
+  // 사용자의 role을 확인하여 admin만 글 작성할 수 있도록
+  const userRef = ref(database, 'users/' + user.uid);
+  const snapshot = await get(userRef);
+  if (snapshot.exists()) {
+    const userData = snapshot.val();
+    if (userData.role !== 'admin') {
+      alert("관리자만 글을 작성할 수 있습니다.");
+      return; // admin이 아닌 경우 글 작성 페이지로 이동하지 않음
+    }
 
-  try {
-    // 사용자의 role을 확인하여 admin만 글 작성할 수 있도록
-    const userRef = ref(database, 'users/' + user.uid);
-    const snapshot = await get(userRef);
-    if (snapshot.exists()) {
-      const userData = snapshot.val();
-      if (userData.role !== 'admin') {
-        alert("관리자만 글을 작성할 수 있습니다.");
-        return;
-      }
+    // Firebase에서 현재 공지사항 목록 가져오기
+    const subject = e.target.subject.value;
+    const content = e.target.content.value;
 
+    try {
       // 기존 공지사항들의 index 값 중 가장 큰 값 찾기
       const noticesRef = ref(database, "notices");
       const snapshotNotices = await get(noticesRef);
@@ -119,16 +119,16 @@ const submitHandler = async (e) => {
       // 새로운 공지사항 객체 생성
       const instance = new Notice(subject, content, newIndex);
 
-      // Firebase에 새 공지사항 추가
-      const newNoticeRef = push(noticesRef); // 고유 키로 데이터 추가
+      // index 값을 기준으로 새로운 공지사항을 추가
+      const newNoticeRef = ref(database, `notices/${newIndex}`);  // 고유 키 대신 index 값을 경로로 사용
       await set(newNoticeRef, instance);
 
       // 성공적으로 저장된 경우 상세 페이지로 이동
-      location.href = "notice-view.html?key=" + newNoticeRef.key;
+      location.href = "notice-view.html?index=" + newIndex;  // URL에 index 값 전달
+    } catch (e) {
+      alert(e.message);
+      console.error(e);
     }
-  } catch (e) {
-    alert(e.message);
-    console.error(e);
   }
 };
 
