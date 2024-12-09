@@ -1,6 +1,6 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js'; 
 import { getDatabase, ref, push, set, get } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js';
-import { getAuth,onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js';
+import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDwZIP7CNex9zvLckwM5xCf0iafsYfAQcE",
@@ -19,14 +19,27 @@ const auth = getAuth(app);
 
 const loginLink = $("#login-link");
 
-onAuthStateChanged(auth, (user) => {
+// 로그인 상태 변경 시 처리
+onAuthStateChanged(auth, async (user) => {
   if (user) {
     // 로그인한 경우: 마이페이지로 이동
-    loginLink.attr("href", "pages/mypage.html"); // 마이페이지 링크로 변경
+    loginLink.attr("href", "pages/mypage.html");
+
+    // 사용자 역할 확인 (DB에서 사용자 정보 가져오기)
+    const userRef = ref(database, 'users/' + user.uid);
+    const snapshot = await get(userRef);
+    if (snapshot.exists()) {
+      const userData = snapshot.val();
+      if (userData.role !== 'admin') {
+        // 역할이 admin이 아닌 경우 글 작성 버튼 비활성화
+        $("#writeForm").hide();  // 글 작성 폼 숨기기
+        alert("관리자만 글을 작성할 수 있습니다.");
+      }
+    }
   } else {
-  // 로그인하지 않은 경우: 로그인 페이지로 이동
-  loginLink.attr("href", "pages/login.html"); // 로그인 페이지 링크로 변경
-  } 
+    // 로그인하지 않은 경우: 로그인 페이지로 이동
+    loginLink.attr("href", "pages/login.html");
+  }
 });
 
 // 현재 날짜 반환 함수
@@ -46,12 +59,12 @@ const recordDate = () => {
 // Notice 클래스 정의
 class Notice {
   constructor(subjectstr, contentStr, index) {
-    this.index = index || 0;  // index 값은 파라미터로 받아옴
-    this.subject = subjectstr || "";  // 빈 문자열 기본값 설정
-    this.writer = "admin";  // writer는 항상 "admin"으로 고정
-    this.content = contentStr || "";  // 빈 문자열 기본값 설정
+    this.index = index || 0;
+    this.subject = subjectstr || "";
+    this.writer = "admin";
+    this.content = contentStr || "";
     this.date = recordDate();
-    this.views = 0;  // 기본값 설정
+    this.views = 0;
     this.refresh = false;
   }
 
@@ -67,37 +80,53 @@ class Notice {
   }
 }
 
-//글 작성 버튼
+// 글 작성 버튼
 const submitHandler = async (e) => {
   e.preventDefault();
 
+  const user = auth.currentUser;
+  if (!user) {
+    alert("로그인 후 글을 작성할 수 있습니다.");
+    return;
+  }
+
+  // Firebase에서 현재 공지사항 목록 가져오기
   const subject = e.target.subject.value;
   const content = e.target.content.value;
 
   try {
-    // Firebase에서 현재 공지사항 목록 가져오기
-    const noticesRef = ref(database, "notices");
-    const snapshot = await get(noticesRef);
-    const noticesObj = snapshot.exists() ? snapshot.val() : [];
+    // 사용자의 role을 확인하여 admin만 글 작성할 수 있도록
+    const userRef = ref(database, 'users/' + user.uid);
+    const snapshot = await get(userRef);
+    if (snapshot.exists()) {
+      const userData = snapshot.val();
+      if (userData.role !== 'admin') {
+        alert("관리자만 글을 작성할 수 있습니다.");
+        return;
+      }
 
-    // 기존 공지사항들의 index 값 중 가장 큰 값 찾기
-    let newIndex = 0;  // 기본값 0
-    if (noticesObj) {
-      const indexes = Object.values(noticesObj).map(notice => notice.index);
-      newIndex = indexes.length > 0 ? Math.max(...indexes) + 1 : 0;  // 가장 큰 index 값에 1을 더한 값 사용
+      // 기존 공지사항들의 index 값 중 가장 큰 값 찾기
+      const noticesRef = ref(database, "notices");
+      const snapshotNotices = await get(noticesRef);
+      const noticesObj = snapshotNotices.exists() ? snapshotNotices.val() : [];
+
+      let newIndex = 0;
+      if (noticesObj) {
+        const indexes = Object.values(noticesObj).map(notice => notice.index);
+        newIndex = indexes.length > 0 ? Math.max(...indexes) + 1 : 0;
+      }
+
+      // 새로운 공지사항 객체 생성
+      const instance = new Notice(subject, content, newIndex);
+
+      // Firebase에 새 공지사항 추가
+      const newNoticeRef = push(noticesRef); // 고유 키로 데이터 추가
+      await set(newNoticeRef, instance);
+
+      // 성공적으로 저장된 경우 상세 페이지로 이동
+      location.href = "notice-view.html?key=" + newNoticeRef.key;
     }
-
-    // 새로운 공지사항 객체 생성
-    const instance = new Notice(subject, content, newIndex);
-    
-    // Firebase에 새 공지사항 추가
-    const newNoticeRef = push(noticesRef); // 고유 키로 데이터 추가
-    await set(newNoticeRef, instance);
-
-    // 성공적으로 저장된 경우 상세 페이지로 이동 (key 값 전달)
-    location.href = "notice-view.html?key=" + newNoticeRef.key; // 고유 키로 이동
   } catch (e) {
-    // 예외 발생 시 메시지 출력
     alert(e.message);
     console.error(e);
   }
